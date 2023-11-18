@@ -49,7 +49,7 @@ class AE(nn.Module):
         #(bathsize,1,zdim)
         z = torch.permute(z, (1,0,2)) 
         pred_tokens = self.decoder.decode(x, hidden, z, MAX_LENGTH)
-        return pred_tokens
+        return pred_tokens, z
 
 class Encoder_GRU_AE(nn.Module):
     def __init__(self):

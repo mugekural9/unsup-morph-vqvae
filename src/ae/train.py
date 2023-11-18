@@ -9,7 +9,7 @@ from ae.util import accuracy_on_batch, decode_batch
 from torch.utils.tensorboard import SummaryWriter
 from ae.test import test
 
-TRN_ID = 8
+TRN_ID = 2
 path = 'results/ae/'+str(TRN_ID)
 try:
     shutil.rmtree(path)
@@ -111,7 +111,7 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab):
         i=0
         for bid, batch in tstbatches.items():
             batchloss, nonpadded_tokens, predtokens  = model(batch)
-            predtokens = model.decode(batch)
+            predtokens, _ = model.decode(batch)
             gold_decoded_batches = decode_batch(batch[:,1:], charvocab)
             pred_decoded_batches = decode_batch(predtokens, charvocab)
             for g,p in zip(gold_decoded_batches, pred_decoded_batches):
