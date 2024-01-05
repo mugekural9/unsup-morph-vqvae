@@ -24,8 +24,15 @@ class MorphDataset():
                         self.tagslist.append(tags)
                 else:
                     self.lemmas.append(lemma)
-                    self.tagslist.append(tags)
                     self.tgts.append(tgt)
+                    self.tagslist.append(tags)
+
+                    if ('train' in datafile):
+                        if lemma not in self.tgts:
+                            # add lemmas to tgt as well -unsupervised VERSION!
+                            self.lemmas.append(lemma)
+                            self.tgts.append(lemma)
+                            self.tagslist.append(tags)
     
             if charvocab is None:
                 self.charvocab = CharVocab(self.tgts)

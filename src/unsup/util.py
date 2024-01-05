@@ -1,9 +1,10 @@
 import torch
 
-def accuracy_on_batch(x, tgt):
+def accuracy_on_batch(x, tgt, charvocab):
     true_tokens =  torch.sum((x ==tgt) * (tgt!=0))
     all_tokens  =  torch.sum(tgt!=0)
     exact_match = 0
+    
     for i in range(x.shape[0]):
         if (torch.sum(x[i] == tgt[i]) == x.shape[1]):
             exact_match +=1

@@ -1,0 +1,78 @@
+2024-01-05 13:26:56,331 - trnsize: 404897
+2024-01-05 13:26:56,338 - devsize: 1446
+2024-01-05 13:26:56,339 - tstsize: 1446
+2024-01-05 13:26:56,925 - Trn unique tgts: 404896
+2024-01-05 13:26:56,926 - Trn unique lemmas: 588
+2024-01-05 13:26:56,927 - Trn unique taglists: 703
+2024-01-05 13:26:56,927 - Dev unique tgts: 1446
+2024-01-05 13:26:56,928 - Dev unique lemmas: 536
+2024-01-05 13:26:56,928 - Dev unique taglists: 616
+2024-01-05 13:26:56,929 - Tst unique tgts: 1446
+2024-01-05 13:26:56,929 - Tst unique lemmas: 536
+2024-01-05 13:26:56,930 - Tst unique taglists: 616
+2024-01-05 13:26:56,931 - seen_dev_tgt: 1
+2024-01-05 13:26:56,931 - seen_dev_lemma: 1446
+2024-01-05 13:26:56,932 - seen_dev_taglist: 1446
+2024-01-05 13:26:56,932 - seen_tst_tgt: 1
+2024-01-05 13:26:56,933 - seen_tst_lemma: 1446
+2024-01-05 13:26:56,933 - seen_tst_taglist: 1446
+2024-01-05 13:27:15,087 - trnID: run1_5x8_zLEM100_zTAG128_decnh1024_kl1.0_epc10_strt5_decdo0.2_inpemb128_bsize128
+2024-01-05 13:27:15,087 - batchsize: 128
+2024-01-05 13:27:15,088 - epochs: 50
+2024-01-05 13:27:15,089 - lr: 0.00050
+2024-01-05 13:27:15,089 - KL_WEIGHT: 1.00000
+2024-01-05 13:27:15,090 - opt: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.5, 0.999)
+    capturable: False
+    eps: 1e-08
+    foreach: None
+    lr: 0.0005
+    maximize: False
+    weight_decay: 0
+)
+2024-01-05 13:27:15,091 - MSVAE(
+  (embed): Embedding(39, 300)
+  (encoder): MSVED_Encoder(
+    (embed): Embedding(39, 300)
+    (gru): GRU(300, 256, batch_first=True, bidirectional=True)
+    (dropout_in): Dropout(p=0.0, inplace=False)
+    (linear): Linear(in_features=512, out_features=300, bias=True)
+  )
+  (decoder): MSVED_Decoder(
+    (char_embed): Embedding(39, 300)
+    (dropout_in): Dropout(p=0.5, inplace=False)
+    (gru): GRU(650, 256, batch_first=True)
+    (attn): Linear(in_features=706, out_features=5, bias=True)
+    (attn_combine): Linear(in_features=650, out_features=650, bias=True)
+    (pred_linear): Linear(in_features=256, out_features=39, bias=True)
+    (loss): CrossEntropyLoss()
+  )
+  (z_to_dec): Linear(in_features=150, out_features=256, bias=True)
+  (tag_to_dec): Linear(in_features=200, out_features=256, bias=True)
+  (tag_embeddings): ModuleList(
+    (0): Embedding(8, 200)
+    (1): Embedding(8, 200)
+    (2): Embedding(8, 200)
+    (3): Embedding(8, 200)
+    (4): Embedding(8, 200)
+  )
+  (classifiers): ModuleList(
+    (0): Linear(in_features=512, out_features=8, bias=True)
+    (1): Linear(in_features=512, out_features=8, bias=True)
+    (2): Linear(in_features=512, out_features=8, bias=True)
+    (3): Linear(in_features=512, out_features=8, bias=True)
+    (4): Linear(in_features=512, out_features=8, bias=True)
+  )
+)
+2024-01-05 13:27:15,636 - trnsize: 404897
+2024-01-05 13:27:15,637 - devsize: 1446
+2024-01-05 13:27:15,638 - tstsize: 1446
+2024-01-05 13:27:15,638 - 
+2024-01-05 13:27:15,639 - #epc: 0
+2024-01-05 13:27:15,642 - epc:0, epc_KL:  0.000000
+2024-01-05 13:29:05,882 - epoch: 0, kl_weight: 0.01, tmp: 0.94
+2024-01-05 13:29:05,883 - Trn--- loss: 16.9843,  labeled_recon_loss: 0.8733, labeled_kl_loss: 458.3159, labeled_reinflect_recon_acc: 0.7175
+2024-01-05 13:29:06,338 - Tst--- loss: 0.0119, labeled_recon_loss: 0.1691, labeled_kl_loss: 2.3419,  labeled_reinflect_recon_acc: 0.9528
+2024-01-05 13:29:24,214 - exact_match_tst_acc: 0.372

@@ -1,0 +1,1061 @@
+2023-12-22 18:49:37,142 - trnsize: 404897
+2023-12-22 18:49:37,148 - devsize: 1446
+2023-12-22 18:49:37,149 - tstsize: 1446
+2023-12-22 18:49:37,720 - Trn unique tgts: 404896
+2023-12-22 18:49:37,721 - Trn unique lemmas: 588
+2023-12-22 18:49:37,722 - Trn unique taglists: 703
+2023-12-22 18:49:37,723 - Dev unique tgts: 1446
+2023-12-22 18:49:37,724 - Dev unique lemmas: 536
+2023-12-22 18:49:37,725 - Dev unique taglists: 616
+2023-12-22 18:49:37,726 - Tst unique tgts: 1446
+2023-12-22 18:49:37,726 - Tst unique lemmas: 536
+2023-12-22 18:49:37,727 - Tst unique taglists: 616
+2023-12-22 18:49:37,728 - seen_dev_tgt: 1
+2023-12-22 18:49:37,729 - seen_dev_lemma: 1446
+2023-12-22 18:49:37,730 - seen_dev_taglist: 1446
+2023-12-22 18:49:37,731 - seen_tst_tgt: 1
+2023-12-22 18:49:37,731 - seen_tst_lemma: 1446
+2023-12-22 18:49:37,732 - seen_tst_taglist: 1446
+2023-12-22 18:49:59,457 - trnID: run2_1x2048_zLEM100_zTAG128_decnh1024_kl1.0_epc10_strt5_decdo0.2_inpemb128_bsize64
+2023-12-22 18:49:59,458 - batchsize: 64
+2023-12-22 18:49:59,459 - epochs: 50
+2023-12-22 18:49:59,460 - lr: 0.00050
+2023-12-22 18:49:59,461 - KL_WEIGHT: 1.00000
+2023-12-22 18:49:59,462 - opt: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.5, 0.999)
+    capturable: False
+    eps: 1e-08
+    foreach: None
+    lr: 0.0005
+    maximize: False
+    weight_decay: 0
+)
+2023-12-22 18:49:59,463 - VQVAE(
+  (encoder): Encoder_GRU_VQVAE(
+    (layers): ModuleList(
+      (0): Embedding(39, 128)
+      (1): Dropout(p=0.0, inplace=False)
+      (2): GRU(128, 256, batch_first=True, bidirectional=True)
+    )
+  )
+  (z_linears): ModuleList(
+    (0): Linear(in_features=256, out_features=128, bias=True)
+  )
+  (quantizers): ModuleList(
+    (0): Quantizer(
+      (embeddings): Embedding(2048, 128)
+    )
+  )
+  (z_lemma_mu): Linear(in_features=256, out_features=100, bias=True)
+  (z_lemma_logvar): Linear(in_features=256, out_features=100, bias=True)
+  (up_from_z_layer): Linear(in_features=228, out_features=1024, bias=True)
+  (decoder): Decoder_GRU_VQVAE(
+    (layers): ModuleList(
+      (0): Embedding(39, 128)
+      (1): Dropout(p=0.2, inplace=False)
+      (2): GRU(356, 1024, batch_first=True)
+      (3): Linear(in_features=1024, out_features=39, bias=True)
+    )
+    (loss): CrossEntropyLoss()
+  )
+)
+2023-12-22 18:49:59,601 - trnsize: 404897
+2023-12-22 18:49:59,602 - devsize: 1446
+2023-12-22 18:49:59,603 - tstsize: 1446
+2023-12-22 18:49:59,604 - 
+2023-12-22 18:49:59,605 - #epc: 0
+2023-12-22 18:49:59,608 - epc:0, epc_KL:  0.000000
+2023-12-22 18:56:03,184 - exact_match_tst_copy_acc: 0.988
+2023-12-22 18:56:03,185 - exact_match_tst_reinflection_wlemma: 0.005
+2023-12-22 18:56:03,186 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.005
+2023-12-22 18:56:03,187 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.005
+2023-12-22 18:56:03,437 - TRN || epcloss: 0.0823
+2023-12-22 18:56:03,438 -     || Q: 0.0849
+2023-12-22 18:56:03,439 -     || KL: 5.6146
+2023-12-22 18:56:03,441 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 18:56:03,442 -     || unique taglist code: 19
+2023-12-22 18:56:03,443 - DEV || epcloss: 0.0021
+2023-12-22 18:56:03,444 -     || Q: 0.0012
+2023-12-22 18:56:03,444 -     || KL: 13.6596
+2023-12-22 18:56:03,446 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 18:56:03,447 -     || unique taglist code: 13
+2023-12-22 18:56:03,448 -     || seen taglist code: 13
+2023-12-22 18:56:03,449 -     || MOST used trncode: 19
+2023-12-22 18:56:03,450 -     || MOST used devcode: 13
+2023-12-22 18:56:03,563 -     || saved model
+2023-12-22 18:56:03,565 - 
+2023-12-22 18:56:03,566 - #epc: 1
+2023-12-22 18:56:03,839 - epc:1, epc_KL:  0.000000
+2023-12-22 19:02:11,000 - exact_match_tst_copy_acc: 0.996
+2023-12-22 19:02:11,001 - exact_match_tst_reinflection_wlemma: 0.007
+2023-12-22 19:02:11,002 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.007
+2023-12-22 19:02:11,003 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.007
+2023-12-22 19:02:11,248 - TRN || epcloss: 0.0055
+2023-12-22 19:02:11,249 -     || Q: 0.0019
+2023-12-22 19:02:11,250 -     || KL: 6.5934
+2023-12-22 19:02:11,251 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:02:11,252 -     || unique taglist code: 22
+2023-12-22 19:02:11,253 - DEV || epcloss: 0.0008
+2023-12-22 19:02:11,254 -     || Q: 0.0008
+2023-12-22 19:02:11,254 -     || KL: 14.7791
+2023-12-22 19:02:11,255 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:02:11,256 -     || unique taglist code: 16
+2023-12-22 19:02:11,257 -     || seen taglist code: 16
+2023-12-22 19:02:11,258 -     || MOST used trncode: 22
+2023-12-22 19:02:11,259 -     || MOST used devcode: 16
+2023-12-22 19:02:11,308 -     || saved model
+2023-12-22 19:02:11,310 - 
+2023-12-22 19:02:11,311 - #epc: 2
+2023-12-22 19:02:11,546 - epc:2, epc_KL:  0.000000
+2023-12-22 19:08:19,487 - exact_match_tst_copy_acc: 0.998
+2023-12-22 19:08:19,488 - exact_match_tst_reinflection_wlemma: 0.008
+2023-12-22 19:08:19,489 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.008
+2023-12-22 19:08:19,490 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.008
+2023-12-22 19:08:19,690 - TRN || epcloss: 0.0030
+2023-12-22 19:08:19,691 -     || Q: 0.0010
+2023-12-22 19:08:19,692 -     || KL: 7.0218
+2023-12-22 19:08:19,693 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:08:19,694 -     || unique taglist code: 22
+2023-12-22 19:08:19,695 - DEV || epcloss: 0.0005
+2023-12-22 19:08:19,696 -     || Q: 0.0004
+2023-12-22 19:08:19,697 -     || KL: 15.5240
+2023-12-22 19:08:19,698 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:08:19,700 -     || unique taglist code: 16
+2023-12-22 19:08:19,701 -     || seen taglist code: 16
+2023-12-22 19:08:19,751 -     || saved model
+2023-12-22 19:08:19,754 - 
+2023-12-22 19:08:19,755 - #epc: 3
+2023-12-22 19:08:19,983 - epc:3, epc_KL:  0.000000
+2023-12-22 19:14:25,815 - exact_match_tst_copy_acc: 0.982
+2023-12-22 19:14:25,817 - exact_match_tst_reinflection_wlemma: 0.008
+2023-12-22 19:14:25,818 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.008
+2023-12-22 19:14:25,819 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.008
+2023-12-22 19:14:26,045 - TRN || epcloss: 0.0020
+2023-12-22 19:14:26,046 -     || Q: 0.0007
+2023-12-22 19:14:26,047 -     || KL: 7.4183
+2023-12-22 19:14:26,048 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:14:26,049 -     || unique taglist code: 24
+2023-12-22 19:14:26,050 - DEV || epcloss: 0.0029
+2023-12-22 19:14:26,051 -     || Q: 0.0015
+2023-12-22 19:14:26,052 -     || KL: 15.7319
+2023-12-22 19:14:26,053 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:14:26,054 -     || unique taglist code: 19
+2023-12-22 19:14:26,054 -     || seen taglist code: 19
+2023-12-22 19:14:26,055 -     || MOST used trncode: 24
+2023-12-22 19:14:26,056 -     || MOST used devcode: 19
+2023-12-22 19:14:26,135 -     || saved model
+2023-12-22 19:14:26,137 - 
+2023-12-22 19:14:26,138 - #epc: 4
+2023-12-22 19:14:26,358 - epc:4, epc_KL:  0.000000
+2023-12-22 19:20:30,861 - exact_match_tst_copy_acc: 0.996
+2023-12-22 19:20:30,862 - exact_match_tst_reinflection_wlemma: 0.003
+2023-12-22 19:20:30,863 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.003
+2023-12-22 19:20:30,864 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.003
+2023-12-22 19:20:31,092 - TRN || epcloss: 0.0015
+2023-12-22 19:20:31,093 -     || Q: 0.0006
+2023-12-22 19:20:31,094 -     || KL: 7.8323
+2023-12-22 19:20:31,095 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:20:31,096 -     || unique taglist code: 24
+2023-12-22 19:20:31,097 - DEV || epcloss: 0.0008
+2023-12-22 19:20:31,098 -     || Q: 0.0005
+2023-12-22 19:20:31,099 -     || KL: 17.4685
+2023-12-22 19:20:31,100 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:20:31,100 -     || unique taglist code: 19
+2023-12-22 19:20:31,101 -     || seen taglist code: 19
+2023-12-22 19:20:31,198 -     || saved model
+2023-12-22 19:20:31,200 - 
+2023-12-22 19:20:31,202 - #epc: 5
+2023-12-22 19:20:31,425 - epc:5, epc_KL:  0.100000
+2023-12-22 19:26:38,350 - exact_match_tst_copy_acc: 0.995
+2023-12-22 19:26:38,351 - exact_match_tst_reinflection_wlemma: 0.018
+2023-12-22 19:26:38,352 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.018
+2023-12-22 19:26:38,353 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.018
+2023-12-22 19:26:38,653 - TRN || epcloss: 0.0214
+2023-12-22 19:26:38,654 -     || Q: 0.0088
+2023-12-22 19:26:38,655 -     || KL: 0.7888
+2023-12-22 19:26:38,656 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:26:38,657 -     || unique taglist code: 27
+2023-12-22 19:26:38,658 - DEV || epcloss: 0.0013
+2023-12-22 19:26:38,659 -     || Q: 0.0126
+2023-12-22 19:26:38,660 -     || KL: 1.4564
+2023-12-22 19:26:38,661 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:26:38,662 -     || unique taglist code: 26
+2023-12-22 19:26:38,663 -     || seen taglist code: 26
+2023-12-22 19:26:38,671 -     || MOST used trncode: 27
+2023-12-22 19:26:38,672 -     || MOST used devcode: 26
+2023-12-22 19:26:38,781 -     || saved model
+2023-12-22 19:26:38,783 - 
+2023-12-22 19:26:38,784 - #epc: 6
+2023-12-22 19:26:38,996 - epc:6, epc_KL:  0.200000
+2023-12-22 19:32:48,476 - exact_match_tst_copy_acc: 0.998
+2023-12-22 19:32:48,478 - exact_match_tst_reinflection_wlemma: 0.025
+2023-12-22 19:32:48,479 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.025
+2023-12-22 19:32:48,479 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.025
+2023-12-22 19:32:48,828 - TRN || epcloss: 0.0232
+2023-12-22 19:32:48,829 -     || Q: 0.0222
+2023-12-22 19:32:48,830 -     || KL: 0.4654
+2023-12-22 19:32:48,831 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:32:48,832 -     || unique taglist code: 34
+2023-12-22 19:32:48,833 - DEV || epcloss: 0.0013
+2023-12-22 19:32:48,834 -     || Q: 0.0187
+2023-12-22 19:32:48,834 -     || KL: 0.8772
+2023-12-22 19:32:48,835 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:32:48,836 -     || unique taglist code: 31
+2023-12-22 19:32:48,837 -     || seen taglist code: 31
+2023-12-22 19:32:48,838 -     || MOST used trncode: 34
+2023-12-22 19:32:48,839 -     || MOST used devcode: 31
+2023-12-22 19:32:48,943 -     || saved model
+2023-12-22 19:32:48,946 - 
+2023-12-22 19:32:48,947 - #epc: 7
+2023-12-22 19:32:49,157 - epc:7, epc_KL:  0.300000
+2023-12-22 19:39:02,859 - exact_match_tst_copy_acc: 0.997
+2023-12-22 19:39:02,860 - exact_match_tst_reinflection_wlemma: 0.028
+2023-12-22 19:39:02,861 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.028
+2023-12-22 19:39:02,861 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.028
+2023-12-22 19:39:03,175 - TRN || epcloss: 0.0246
+2023-12-22 19:39:03,176 -     || Q: 0.0279
+2023-12-22 19:39:03,177 -     || KL: 0.3565
+2023-12-22 19:39:03,178 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:39:03,179 -     || unique taglist code: 40
+2023-12-22 19:39:03,180 - DEV || epcloss: 0.0011
+2023-12-22 19:39:03,181 -     || Q: 0.0228
+2023-12-22 19:39:03,182 -     || KL: 0.7279
+2023-12-22 19:39:03,183 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:39:03,184 -     || unique taglist code: 37
+2023-12-22 19:39:03,185 -     || seen taglist code: 37
+2023-12-22 19:39:03,186 -     || MOST used trncode: 40
+2023-12-22 19:39:03,187 -     || MOST used devcode: 37
+2023-12-22 19:39:03,247 -     || saved model
+2023-12-22 19:39:03,249 - 
+2023-12-22 19:39:03,250 - #epc: 8
+2023-12-22 19:39:03,442 - epc:8, epc_KL:  0.400000
+2023-12-22 19:45:12,573 - exact_match_tst_copy_acc: 0.993
+2023-12-22 19:45:12,574 - exact_match_tst_reinflection_wlemma: 0.037
+2023-12-22 19:45:12,575 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.035
+2023-12-22 19:45:12,576 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.037
+2023-12-22 19:45:12,902 - TRN || epcloss: 0.0281
+2023-12-22 19:45:12,904 -     || Q: 0.0319
+2023-12-22 19:45:12,904 -     || KL: 0.3081
+2023-12-22 19:45:12,906 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:45:12,907 -     || unique taglist code: 45
+2023-12-22 19:45:12,908 - DEV || epcloss: 0.0019
+2023-12-22 19:45:12,909 -     || Q: 0.0323
+2023-12-22 19:45:12,910 -     || KL: 0.6386
+2023-12-22 19:45:12,911 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:45:12,912 -     || unique taglist code: 42
+2023-12-22 19:45:12,913 -     || seen taglist code: 42
+2023-12-22 19:45:12,914 -     || MOST used trncode: 45
+2023-12-22 19:45:12,915 -     || MOST used devcode: 42
+2023-12-22 19:45:13,012 -     || saved model
+2023-12-22 19:45:13,014 - 
+2023-12-22 19:45:13,015 - #epc: 9
+2023-12-22 19:45:13,216 - epc:9, epc_KL:  0.500000
+2023-12-22 19:51:24,820 - exact_match_tst_copy_acc: 0.992
+2023-12-22 19:51:24,821 - exact_match_tst_reinflection_wlemma: 0.034
+2023-12-22 19:51:24,822 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.033
+2023-12-22 19:51:24,823 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.035
+2023-12-22 19:51:25,203 - TRN || epcloss: 0.0328
+2023-12-22 19:51:25,204 -     || Q: 0.0435
+2023-12-22 19:51:25,205 -     || KL: 0.2786
+2023-12-22 19:51:25,206 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:51:25,207 -     || unique taglist code: 48
+2023-12-22 19:51:25,208 - DEV || epcloss: 0.0018
+2023-12-22 19:51:25,208 -     || Q: 0.0420
+2023-12-22 19:51:25,209 -     || KL: 0.5726
+2023-12-22 19:51:25,210 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:51:25,211 -     || unique taglist code: 44
+2023-12-22 19:51:25,212 -     || seen taglist code: 44
+2023-12-22 19:51:25,213 -     || MOST used trncode: 48
+2023-12-22 19:51:25,214 -     || MOST used devcode: 44
+2023-12-22 19:51:25,320 -     || saved model
+2023-12-22 19:51:25,322 - 
+2023-12-22 19:51:25,323 - #epc: 10
+2023-12-22 19:51:25,523 - epc:10, epc_KL:  0.600000
+2023-12-22 19:57:37,296 - exact_match_tst_copy_acc: 0.988
+2023-12-22 19:57:37,297 - exact_match_tst_reinflection_wlemma: 0.038
+2023-12-22 19:57:37,298 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.037
+2023-12-22 19:57:37,299 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.039
+2023-12-22 19:57:37,672 - TRN || epcloss: 0.0375
+2023-12-22 19:57:37,673 -     || Q: 0.0567
+2023-12-22 19:57:37,675 -     || KL: 0.2577
+2023-12-22 19:57:37,676 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:57:37,677 -     || unique taglist code: 51
+2023-12-22 19:57:37,678 - DEV || epcloss: 0.0028
+2023-12-22 19:57:37,679 -     || Q: 0.0566
+2023-12-22 19:57:37,680 -     || KL: 0.5303
+2023-12-22 19:57:37,681 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 19:57:37,682 -     || unique taglist code: 49
+2023-12-22 19:57:37,683 -     || seen taglist code: 49
+2023-12-22 19:57:37,685 -     || MOST used trncode: 51
+2023-12-22 19:57:37,686 -     || MOST used devcode: 49
+2023-12-22 19:57:37,794 -     || saved model
+2023-12-22 19:57:37,796 - 
+2023-12-22 19:57:37,797 - #epc: 11
+2023-12-22 19:57:37,987 - epc:11, epc_KL:  0.700000
+2023-12-22 20:03:51,438 - exact_match_tst_copy_acc: 0.976
+2023-12-22 20:03:51,439 - exact_match_tst_reinflection_wlemma: 0.048
+2023-12-22 20:03:51,440 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.048
+2023-12-22 20:03:51,441 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.048
+2023-12-22 20:03:51,804 - TRN || epcloss: 0.0427
+2023-12-22 20:03:51,806 -     || Q: 0.0713
+2023-12-22 20:03:51,807 -     || KL: 0.2407
+2023-12-22 20:03:51,809 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:03:51,810 -     || unique taglist code: 53
+2023-12-22 20:03:51,811 - DEV || epcloss: 0.0046
+2023-12-22 20:03:51,812 -     || Q: 0.0713
+2023-12-22 20:03:51,814 -     || KL: 0.5008
+2023-12-22 20:03:51,815 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:03:51,816 -     || unique taglist code: 49
+2023-12-22 20:03:51,818 -     || seen taglist code: 49
+2023-12-22 20:03:51,819 -     || MOST used trncode: 53
+2023-12-22 20:03:51,953 -     || saved model
+2023-12-22 20:03:51,956 - 
+2023-12-22 20:03:51,957 - #epc: 12
+2023-12-22 20:03:52,170 - epc:12, epc_KL:  0.800000
+2023-12-22 20:09:59,103 - exact_match_tst_copy_acc: 0.978
+2023-12-22 20:09:59,104 - exact_match_tst_reinflection_wlemma: 0.052
+2023-12-22 20:09:59,105 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.051
+2023-12-22 20:09:59,106 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.053
+2023-12-22 20:09:59,453 - TRN || epcloss: 0.0484
+2023-12-22 20:09:59,454 -     || Q: 0.0892
+2023-12-22 20:09:59,455 -     || KL: 0.2267
+2023-12-22 20:09:59,456 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:09:59,457 -     || unique taglist code: 56
+2023-12-22 20:09:59,458 - DEV || epcloss: 0.0046
+2023-12-22 20:09:59,459 -     || Q: 0.0905
+2023-12-22 20:09:59,460 -     || KL: 0.4833
+2023-12-22 20:09:59,461 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:09:59,462 -     || unique taglist code: 54
+2023-12-22 20:09:59,463 -     || seen taglist code: 54
+2023-12-22 20:09:59,464 -     || MOST used trncode: 56
+2023-12-22 20:09:59,465 -     || MOST used devcode: 54
+2023-12-22 20:09:59,577 -     || saved model
+2023-12-22 20:09:59,580 - 
+2023-12-22 20:09:59,581 - #epc: 13
+2023-12-22 20:09:59,790 - epc:13, epc_KL:  0.900000
+2023-12-22 20:16:07,966 - exact_match_tst_copy_acc: 0.933
+2023-12-22 20:16:07,967 - exact_match_tst_reinflection_wlemma: 0.052
+2023-12-22 20:16:07,968 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.050
+2023-12-22 20:16:07,969 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.053
+2023-12-22 20:16:08,347 - TRN || epcloss: 0.0553
+2023-12-22 20:16:08,348 -     || Q: 0.1118
+2023-12-22 20:16:08,349 -     || KL: 0.2146
+2023-12-22 20:16:08,350 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:16:08,351 -     || unique taglist code: 56
+2023-12-22 20:16:08,352 - DEV || epcloss: 0.0096
+2023-12-22 20:16:08,353 -     || Q: 0.1080
+2023-12-22 20:16:08,354 -     || KL: 0.4526
+2023-12-22 20:16:08,355 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:16:08,356 -     || unique taglist code: 53
+2023-12-22 20:16:08,357 -     || seen taglist code: 53
+2023-12-22 20:16:08,487 -     || saved model
+2023-12-22 20:16:08,489 - 
+2023-12-22 20:16:08,491 - #epc: 14
+2023-12-22 20:16:08,700 - epc:14, epc_KL:  1.000000
+2023-12-22 20:22:14,568 - exact_match_tst_copy_acc: 0.935
+2023-12-22 20:22:14,569 - exact_match_tst_reinflection_wlemma: 0.060
+2023-12-22 20:22:14,570 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.057
+2023-12-22 20:22:14,571 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.061
+2023-12-22 20:22:14,930 - TRN || epcloss: 0.0616
+2023-12-22 20:22:14,931 -     || Q: 0.1252
+2023-12-22 20:22:14,932 -     || KL: 0.2028
+2023-12-22 20:22:14,933 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:22:14,934 -     || unique taglist code: 58
+2023-12-22 20:22:14,935 - DEV || epcloss: 0.0107
+2023-12-22 20:22:14,936 -     || Q: 0.1216
+2023-12-22 20:22:14,937 -     || KL: 0.4195
+2023-12-22 20:22:14,938 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:22:14,939 -     || unique taglist code: 53
+2023-12-22 20:22:14,940 -     || seen taglist code: 53
+2023-12-22 20:22:14,941 -     || MOST used trncode: 58
+2023-12-22 20:22:15,069 -     || saved model
+2023-12-22 20:22:15,072 - 
+2023-12-22 20:22:15,073 - #epc: 15
+2023-12-22 20:22:15,270 - epc:15, epc_KL:  1.000000
+2023-12-22 20:28:21,003 - exact_match_tst_copy_acc: 0.938
+2023-12-22 20:28:21,004 - exact_match_tst_reinflection_wlemma: 0.055
+2023-12-22 20:28:21,005 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.054
+2023-12-22 20:28:21,006 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.057
+2023-12-22 20:28:21,395 - TRN || epcloss: 0.0592
+2023-12-22 20:28:21,397 -     || Q: 0.1215
+2023-12-22 20:28:21,398 -     || KL: 0.1998
+2023-12-22 20:28:21,399 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:28:21,399 -     || unique taglist code: 61
+2023-12-22 20:28:21,401 - DEV || epcloss: 0.0096
+2023-12-22 20:28:21,401 -     || Q: 0.1163
+2023-12-22 20:28:21,402 -     || KL: 0.4257
+2023-12-22 20:28:21,403 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:28:21,404 -     || unique taglist code: 57
+2023-12-22 20:28:21,405 -     || seen taglist code: 57
+2023-12-22 20:28:21,406 -     || MOST used trncode: 61
+2023-12-22 20:28:21,407 -     || MOST used devcode: 57
+2023-12-22 20:28:21,538 -     || saved model
+2023-12-22 20:28:21,540 - 
+2023-12-22 20:28:21,541 - #epc: 16
+2023-12-22 20:28:21,745 - epc:16, epc_KL:  1.000000
+2023-12-22 20:34:28,801 - exact_match_tst_copy_acc: 0.953
+2023-12-22 20:34:28,803 - exact_match_tst_reinflection_wlemma: 0.064
+2023-12-22 20:34:28,804 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.064
+2023-12-22 20:34:28,805 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.065
+2023-12-22 20:34:29,146 - TRN || epcloss: 0.0561
+2023-12-22 20:34:29,147 -     || Q: 0.1158
+2023-12-22 20:34:29,148 -     || KL: 0.1974
+2023-12-22 20:34:29,149 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:34:29,150 -     || unique taglist code: 61
+2023-12-22 20:34:29,151 - DEV || epcloss: 0.0082
+2023-12-22 20:34:29,153 -     || Q: 0.1093
+2023-12-22 20:34:29,154 -     || KL: 0.4086
+2023-12-22 20:34:29,156 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:34:29,157 -     || unique taglist code: 57
+2023-12-22 20:34:29,158 -     || seen taglist code: 57
+2023-12-22 20:34:29,234 -     || saved model
+2023-12-22 20:34:29,236 - 
+2023-12-22 20:34:29,237 - #epc: 17
+2023-12-22 20:34:29,435 - epc:17, epc_KL:  1.000000
+2023-12-22 20:40:44,035 - exact_match_tst_copy_acc: 0.965
+2023-12-22 20:40:44,037 - exact_match_tst_reinflection_wlemma: 0.062
+2023-12-22 20:40:44,037 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.062
+2023-12-22 20:40:44,038 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.062
+2023-12-22 20:40:44,384 - TRN || epcloss: 0.0542
+2023-12-22 20:40:44,385 -     || Q: 0.1121
+2023-12-22 20:40:44,386 -     || KL: 0.1959
+2023-12-22 20:40:44,387 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:40:44,388 -     || unique taglist code: 63
+2023-12-22 20:40:44,389 - DEV || epcloss: 0.0064
+2023-12-22 20:40:44,390 -     || Q: 0.1021
+2023-12-22 20:40:44,391 -     || KL: 0.4100
+2023-12-22 20:40:44,392 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:40:44,394 -     || unique taglist code: 58
+2023-12-22 20:40:44,395 -     || seen taglist code: 58
+2023-12-22 20:40:44,396 -     || MOST used trncode: 63
+2023-12-22 20:40:44,397 -     || MOST used devcode: 58
+2023-12-22 20:40:44,503 -     || saved model
+2023-12-22 20:40:44,506 - 
+2023-12-22 20:40:44,507 - #epc: 18
+2023-12-22 20:40:44,718 - epc:18, epc_KL:  1.000000
+2023-12-22 20:46:57,271 - exact_match_tst_copy_acc: 0.931
+2023-12-22 20:46:57,272 - exact_match_tst_reinflection_wlemma: 0.057
+2023-12-22 20:46:57,273 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.055
+2023-12-22 20:46:57,274 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.057
+2023-12-22 20:46:57,648 - TRN || epcloss: 0.0524
+2023-12-22 20:46:57,649 -     || Q: 0.1086
+2023-12-22 20:46:57,650 -     || KL: 0.1953
+2023-12-22 20:46:57,651 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:46:57,652 -     || unique taglist code: 64
+2023-12-22 20:46:57,653 - DEV || epcloss: 0.0128
+2023-12-22 20:46:57,654 -     || Q: 0.1115
+2023-12-22 20:46:57,655 -     || KL: 0.4209
+2023-12-22 20:46:57,656 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:46:57,657 -     || unique taglist code: 60
+2023-12-22 20:46:57,658 -     || seen taglist code: 60
+2023-12-22 20:46:57,659 -     || MOST used trncode: 64
+2023-12-22 20:46:57,660 -     || MOST used devcode: 60
+2023-12-22 20:46:57,777 -     || saved model
+2023-12-22 20:46:57,779 - 
+2023-12-22 20:46:57,781 - #epc: 19
+2023-12-22 20:46:57,984 - epc:19, epc_KL:  1.000000
+2023-12-22 20:53:13,557 - exact_match_tst_copy_acc: 0.958
+2023-12-22 20:53:13,558 - exact_match_tst_reinflection_wlemma: 0.064
+2023-12-22 20:53:13,559 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.060
+2023-12-22 20:53:13,560 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.064
+2023-12-22 20:53:13,925 - TRN || epcloss: 0.0522
+2023-12-22 20:53:13,926 -     || Q: 0.1053
+2023-12-22 20:53:13,927 -     || KL: 0.1946
+2023-12-22 20:53:13,928 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:53:13,929 -     || unique taglist code: 65
+2023-12-22 20:53:13,930 - DEV || epcloss: 0.0078
+2023-12-22 20:53:13,931 -     || Q: 0.1017
+2023-12-22 20:53:13,932 -     || KL: 0.3967
+2023-12-22 20:53:13,933 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:53:13,934 -     || unique taglist code: 61
+2023-12-22 20:53:13,935 -     || seen taglist code: 61
+2023-12-22 20:53:13,936 -     || MOST used trncode: 65
+2023-12-22 20:53:13,937 -     || MOST used devcode: 61
+2023-12-22 20:53:14,037 -     || saved model
+2023-12-22 20:53:14,039 - 
+2023-12-22 20:53:14,040 - #epc: 20
+2023-12-22 20:53:14,257 - epc:20, epc_KL:  1.000000
+2023-12-22 20:59:27,295 - exact_match_tst_copy_acc: 0.964
+2023-12-22 20:59:27,296 - exact_match_tst_reinflection_wlemma: 0.061
+2023-12-22 20:59:27,297 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.061
+2023-12-22 20:59:27,298 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.061
+2023-12-22 20:59:27,661 - TRN || epcloss: 0.0520
+2023-12-22 20:59:27,662 -     || Q: 0.1047
+2023-12-22 20:59:27,663 -     || KL: 0.1946
+2023-12-22 20:59:27,665 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:59:27,666 -     || unique taglist code: 65
+2023-12-22 20:59:27,667 - DEV || epcloss: 0.0068
+2023-12-22 20:59:27,668 -     || Q: 0.0943
+2023-12-22 20:59:27,669 -     || KL: 0.4148
+2023-12-22 20:59:27,670 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 20:59:27,671 -     || unique taglist code: 59
+2023-12-22 20:59:27,672 -     || seen taglist code: 59
+2023-12-22 20:59:27,771 -     || saved model
+2023-12-22 20:59:27,773 - 
+2023-12-22 20:59:27,774 - #epc: 21
+2023-12-22 20:59:28,009 - epc:21, epc_KL:  1.000000
+2023-12-22 21:05:40,724 - exact_match_tst_copy_acc: 0.947
+2023-12-22 21:05:40,725 - exact_match_tst_reinflection_wlemma: 0.059
+2023-12-22 21:05:40,726 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.057
+2023-12-22 21:05:40,728 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.062
+2023-12-22 21:05:41,089 - TRN || epcloss: 0.0518
+2023-12-22 21:05:41,090 -     || Q: 0.1019
+2023-12-22 21:05:41,091 -     || KL: 0.1948
+2023-12-22 21:05:41,092 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:05:41,093 -     || unique taglist code: 69
+2023-12-22 21:05:41,094 - DEV || epcloss: 0.0112
+2023-12-22 21:05:41,095 -     || Q: 0.1022
+2023-12-22 21:05:41,096 -     || KL: 0.4123
+2023-12-22 21:05:41,096 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:05:41,097 -     || unique taglist code: 62
+2023-12-22 21:05:41,098 -     || seen taglist code: 62
+2023-12-22 21:05:41,099 -     || MOST used trncode: 69
+2023-12-22 21:05:41,100 -     || MOST used devcode: 62
+2023-12-22 21:05:41,216 -     || saved model
+2023-12-22 21:05:41,218 - 
+2023-12-22 21:05:41,219 - #epc: 22
+2023-12-22 21:05:41,457 - epc:22, epc_KL:  1.000000
+2023-12-22 21:11:54,567 - exact_match_tst_copy_acc: 0.956
+2023-12-22 21:11:54,568 - exact_match_tst_reinflection_wlemma: 0.066
+2023-12-22 21:11:54,569 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.065
+2023-12-22 21:11:54,570 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.068
+2023-12-22 21:11:54,958 - TRN || epcloss: 0.0545
+2023-12-22 21:11:54,959 -     || Q: 0.1099
+2023-12-22 21:11:54,960 -     || KL: 0.1952
+2023-12-22 21:11:54,961 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:11:54,962 -     || unique taglist code: 70
+2023-12-22 21:11:54,962 - DEV || epcloss: 0.0088
+2023-12-22 21:11:54,964 -     || Q: 0.1178
+2023-12-22 21:11:54,965 -     || KL: 0.4186
+2023-12-22 21:11:54,966 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:11:54,967 -     || unique taglist code: 64
+2023-12-22 21:11:54,968 -     || seen taglist code: 64
+2023-12-22 21:11:54,969 -     || MOST used trncode: 70
+2023-12-22 21:11:54,970 -     || MOST used devcode: 64
+2023-12-22 21:11:55,051 -     || saved model
+2023-12-22 21:11:55,053 - 
+2023-12-22 21:11:55,054 - #epc: 23
+2023-12-22 21:11:55,300 - epc:23, epc_KL:  1.000000
+2023-12-22 21:18:08,967 - exact_match_tst_copy_acc: 0.967
+2023-12-22 21:18:08,968 - exact_match_tst_reinflection_wlemma: 0.061
+2023-12-22 21:18:08,969 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.060
+2023-12-22 21:18:08,970 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.062
+2023-12-22 21:18:09,317 - TRN || epcloss: 0.0532
+2023-12-22 21:18:09,318 -     || Q: 0.1084
+2023-12-22 21:18:09,319 -     || KL: 0.1946
+2023-12-22 21:18:09,320 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:18:09,320 -     || unique taglist code: 70
+2023-12-22 21:18:09,322 - DEV || epcloss: 0.0070
+2023-12-22 21:18:09,322 -     || Q: 0.1072
+2023-12-22 21:18:09,323 -     || KL: 0.4114
+2023-12-22 21:18:09,324 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:18:09,325 -     || unique taglist code: 63
+2023-12-22 21:18:09,326 -     || seen taglist code: 63
+2023-12-22 21:18:09,424 -     || saved model
+2023-12-22 21:18:09,426 - 
+2023-12-22 21:18:09,428 - #epc: 24
+2023-12-22 21:18:09,665 - epc:24, epc_KL:  1.000000
+2023-12-22 21:24:20,874 - exact_match_tst_copy_acc: 0.960
+2023-12-22 21:24:20,875 - exact_match_tst_reinflection_wlemma: 0.073
+2023-12-22 21:24:20,876 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.071
+2023-12-22 21:24:20,877 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.074
+2023-12-22 21:24:21,268 - TRN || epcloss: 0.0540
+2023-12-22 21:24:21,269 -     || Q: 0.1070
+2023-12-22 21:24:21,270 -     || KL: 0.1948
+2023-12-22 21:24:21,271 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:24:21,272 -     || unique taglist code: 70
+2023-12-22 21:24:21,273 - DEV || epcloss: 0.0090
+2023-12-22 21:24:21,274 -     || Q: 0.1036
+2023-12-22 21:24:21,275 -     || KL: 0.4078
+2023-12-22 21:24:21,276 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:24:21,277 -     || unique taglist code: 64
+2023-12-22 21:24:21,278 -     || seen taglist code: 64
+2023-12-22 21:24:21,368 -     || saved model
+2023-12-22 21:24:21,370 - 
+2023-12-22 21:24:21,371 - #epc: 25
+2023-12-22 21:24:21,601 - epc:25, epc_KL:  1.000000
+2023-12-22 21:30:30,863 - exact_match_tst_copy_acc: 0.956
+2023-12-22 21:30:30,864 - exact_match_tst_reinflection_wlemma: 0.075
+2023-12-22 21:30:30,865 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.074
+2023-12-22 21:30:30,866 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.076
+2023-12-22 21:30:31,231 - TRN || epcloss: 0.0545
+2023-12-22 21:30:31,232 -     || Q: 0.1109
+2023-12-22 21:30:31,233 -     || KL: 0.1951
+2023-12-22 21:30:31,234 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:30:31,235 -     || unique taglist code: 70
+2023-12-22 21:30:31,236 - DEV || epcloss: 0.0108
+2023-12-22 21:30:31,237 -     || Q: 0.1210
+2023-12-22 21:30:31,238 -     || KL: 0.4027
+2023-12-22 21:30:31,238 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:30:31,239 -     || unique taglist code: 64
+2023-12-22 21:30:31,240 -     || seen taglist code: 64
+2023-12-22 21:30:31,340 -     || saved model
+2023-12-22 21:30:31,342 - 
+2023-12-22 21:30:31,343 - #epc: 26
+2023-12-22 21:30:31,574 - epc:26, epc_KL:  1.000000
+2023-12-22 21:36:41,118 - exact_match_tst_copy_acc: 0.897
+2023-12-22 21:36:41,119 - exact_match_tst_reinflection_wlemma: 0.056
+2023-12-22 21:36:41,120 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.053
+2023-12-22 21:36:41,121 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.058
+2023-12-22 21:36:41,479 - TRN || epcloss: 0.0592
+2023-12-22 21:36:41,480 -     || Q: 0.1154
+2023-12-22 21:36:41,481 -     || KL: 0.1973
+2023-12-22 21:36:41,482 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:36:41,483 -     || unique taglist code: 71
+2023-12-22 21:36:41,484 - DEV || epcloss: 0.0270
+2023-12-22 21:36:41,485 -     || Q: 0.1599
+2023-12-22 21:36:41,486 -     || KL: 0.4851
+2023-12-22 21:36:41,486 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:36:41,487 -     || unique taglist code: 70
+2023-12-22 21:36:41,488 -     || seen taglist code: 70
+2023-12-22 21:36:41,489 -     || MOST used trncode: 71
+2023-12-22 21:36:41,490 -     || MOST used devcode: 70
+2023-12-22 21:36:41,636 -     || saved model
+2023-12-22 21:36:41,639 - 
+2023-12-22 21:36:41,640 - #epc: 27
+2023-12-22 21:36:41,867 - epc:27, epc_KL:  1.000000
+2023-12-22 21:42:53,850 - exact_match_tst_copy_acc: 0.847
+2023-12-22 21:42:53,851 - exact_match_tst_reinflection_wlemma: 0.057
+2023-12-22 21:42:53,852 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.055
+2023-12-22 21:42:53,853 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.059
+2023-12-22 21:42:54,208 - TRN || epcloss: 0.0698
+2023-12-22 21:42:54,209 -     || Q: 0.1277
+2023-12-22 21:42:54,210 -     || KL: 0.2030
+2023-12-22 21:42:54,211 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:42:54,212 -     || unique taglist code: 75
+2023-12-22 21:42:54,213 - DEV || epcloss: 0.0329
+2023-12-22 21:42:54,214 -     || Q: 0.1573
+2023-12-22 21:42:54,215 -     || KL: 0.4632
+2023-12-22 21:42:54,216 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:42:54,217 -     || unique taglist code: 70
+2023-12-22 21:42:54,218 -     || seen taglist code: 70
+2023-12-22 21:42:54,219 -     || MOST used trncode: 75
+2023-12-22 21:42:54,333 -     || saved model
+2023-12-22 21:42:54,336 - 
+2023-12-22 21:42:54,337 - #epc: 28
+2023-12-22 21:42:54,581 - epc:28, epc_KL:  1.000000
+2023-12-22 21:49:11,775 - exact_match_tst_copy_acc: 0.923
+2023-12-22 21:49:11,776 - exact_match_tst_reinflection_wlemma: 0.068
+2023-12-22 21:49:11,777 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.067
+2023-12-22 21:49:11,778 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.069
+2023-12-22 21:49:12,148 - TRN || epcloss: 0.0788
+2023-12-22 21:49:12,149 -     || Q: 0.1195
+2023-12-22 21:49:12,150 -     || KL: 0.2072
+2023-12-22 21:49:12,151 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:49:12,151 -     || unique taglist code: 75
+2023-12-22 21:49:12,152 - DEV || epcloss: 0.0124
+2023-12-22 21:49:12,153 -     || Q: 0.1123
+2023-12-22 21:49:12,154 -     || KL: 0.4352
+2023-12-22 21:49:12,156 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:49:12,157 -     || unique taglist code: 68
+2023-12-22 21:49:12,157 -     || seen taglist code: 68
+2023-12-22 21:49:12,251 -     || saved model
+2023-12-22 21:49:12,253 - 
+2023-12-22 21:49:12,254 - #epc: 29
+2023-12-22 21:49:12,503 - epc:29, epc_KL:  1.000000
+2023-12-22 21:55:33,986 - exact_match_tst_copy_acc: 0.923
+2023-12-22 21:55:33,987 - exact_match_tst_reinflection_wlemma: 0.073
+2023-12-22 21:55:33,988 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.072
+2023-12-22 21:55:33,989 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.075
+2023-12-22 21:55:34,365 - TRN || epcloss: 0.0668
+2023-12-22 21:55:34,366 -     || Q: 0.1145
+2023-12-22 21:55:34,367 -     || KL: 0.2008
+2023-12-22 21:55:34,368 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:55:34,370 -     || unique taglist code: 75
+2023-12-22 21:55:34,370 - DEV || epcloss: 0.0210
+2023-12-22 21:55:34,371 -     || Q: 0.1147
+2023-12-22 21:55:34,372 -     || KL: 0.4342
+2023-12-22 21:55:34,373 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 21:55:34,374 -     || unique taglist code: 71
+2023-12-22 21:55:34,375 -     || seen taglist code: 71
+2023-12-22 21:55:34,376 -     || MOST used devcode: 71
+2023-12-22 21:55:34,511 -     || saved model
+2023-12-22 21:55:34,514 - 
+2023-12-22 21:55:34,515 - #epc: 30
+2023-12-22 21:55:34,724 - epc:30, epc_KL:  1.000000
+2023-12-22 22:01:55,918 - exact_match_tst_copy_acc: 0.945
+2023-12-22 22:01:55,919 - exact_match_tst_reinflection_wlemma: 0.071
+2023-12-22 22:01:55,920 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.071
+2023-12-22 22:01:55,921 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.073
+2023-12-22 22:01:56,320 - TRN || epcloss: 0.0665
+2023-12-22 22:01:56,321 -     || Q: 0.1088
+2023-12-22 22:01:56,322 -     || KL: 0.2010
+2023-12-22 22:01:56,323 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:01:56,324 -     || unique taglist code: 75
+2023-12-22 22:01:56,325 - DEV || epcloss: 0.0114
+2023-12-22 22:01:56,326 -     || Q: 0.1013
+2023-12-22 22:01:56,327 -     || KL: 0.4217
+2023-12-22 22:01:56,328 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:01:56,329 -     || unique taglist code: 71
+2023-12-22 22:01:56,330 -     || seen taglist code: 71
+2023-12-22 22:01:56,449 -     || saved model
+2023-12-22 22:01:56,452 - 
+2023-12-22 22:01:56,453 - #epc: 31
+2023-12-22 22:01:56,669 - epc:31, epc_KL:  1.000000
+2023-12-22 22:08:17,995 - exact_match_tst_copy_acc: 0.907
+2023-12-22 22:08:17,997 - exact_match_tst_reinflection_wlemma: 0.083
+2023-12-22 22:08:17,997 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.080
+2023-12-22 22:08:17,998 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.085
+2023-12-22 22:08:18,401 - TRN || epcloss: 0.0817
+2023-12-22 22:08:18,402 -     || Q: 0.1174
+2023-12-22 22:08:18,403 -     || KL: 0.2057
+2023-12-22 22:08:18,404 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:08:18,405 -     || unique taglist code: 77
+2023-12-22 22:08:18,406 - DEV || epcloss: 0.0172
+2023-12-22 22:08:18,407 -     || Q: 0.1222
+2023-12-22 22:08:18,407 -     || KL: 0.4419
+2023-12-22 22:08:18,408 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:08:18,409 -     || unique taglist code: 72
+2023-12-22 22:08:18,410 -     || seen taglist code: 72
+2023-12-22 22:08:18,411 -     || MOST used trncode: 77
+2023-12-22 22:08:18,412 -     || MOST used devcode: 72
+2023-12-22 22:08:18,512 -     || saved model
+2023-12-22 22:08:18,514 - 
+2023-12-22 22:08:18,515 - #epc: 32
+2023-12-22 22:08:18,722 - epc:32, epc_KL:  1.000000
+2023-12-22 22:14:41,987 - exact_match_tst_copy_acc: 0.901
+2023-12-22 22:14:41,989 - exact_match_tst_reinflection_wlemma: 0.059
+2023-12-22 22:14:41,990 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.058
+2023-12-22 22:14:41,991 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.064
+2023-12-22 22:14:42,343 - TRN || epcloss: 0.0991
+2023-12-22 22:14:42,344 -     || Q: 0.1509
+2023-12-22 22:14:42,345 -     || KL: 0.2138
+2023-12-22 22:14:42,346 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:14:42,347 -     || unique taglist code: 79
+2023-12-22 22:14:42,348 - DEV || epcloss: 0.0185
+2023-12-22 22:14:42,349 -     || Q: 0.1264
+2023-12-22 22:14:42,350 -     || KL: 0.4512
+2023-12-22 22:14:42,351 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:14:42,351 -     || unique taglist code: 71
+2023-12-22 22:14:42,353 -     || seen taglist code: 71
+2023-12-22 22:14:42,353 -     || MOST used trncode: 79
+2023-12-22 22:14:42,477 -     || saved model
+2023-12-22 22:14:42,479 - 
+2023-12-22 22:14:42,481 - #epc: 33
+2023-12-22 22:14:42,692 - epc:33, epc_KL:  1.000000
+2023-12-22 22:21:05,827 - exact_match_tst_copy_acc: 0.884
+2023-12-22 22:21:05,829 - exact_match_tst_reinflection_wlemma: 0.068
+2023-12-22 22:21:05,830 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.067
+2023-12-22 22:21:05,831 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.070
+2023-12-22 22:21:06,408 - TRN || epcloss: 0.0790
+2023-12-22 22:21:06,409 -     || Q: 0.1168
+2023-12-22 22:21:06,410 -     || KL: 0.2087
+2023-12-22 22:21:06,411 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:21:06,412 -     || unique taglist code: 79
+2023-12-22 22:21:06,413 - DEV || epcloss: 0.0191
+2023-12-22 22:21:06,414 -     || Q: 0.1124
+2023-12-22 22:21:06,415 -     || KL: 0.4399
+2023-12-22 22:21:06,416 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:21:06,417 -     || unique taglist code: 71
+2023-12-22 22:21:06,418 -     || seen taglist code: 71
+2023-12-22 22:21:06,498 -     || saved model
+2023-12-22 22:21:06,501 - 
+2023-12-22 22:21:06,502 - #epc: 34
+2023-12-22 22:21:06,744 - epc:34, epc_KL:  1.000000
+2023-12-22 22:27:32,330 - exact_match_tst_copy_acc: 0.243
+2023-12-22 22:27:32,331 - exact_match_tst_reinflection_wlemma: 0.023
+2023-12-22 22:27:32,332 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.021
+2023-12-22 22:27:32,333 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.028
+2023-12-22 22:27:32,682 - TRN || epcloss: 0.3164
+2023-12-22 22:27:32,683 -     || Q: 0.2019
+2023-12-22 22:27:32,684 -     || KL: 0.2780
+2023-12-22 22:27:32,685 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:27:32,686 -     || unique taglist code: 81
+2023-12-22 22:27:32,687 - DEV || epcloss: 0.4146
+2023-12-22 22:27:32,688 -     || Q: 0.2186
+2023-12-22 22:27:32,689 -     || KL: 0.8793
+2023-12-22 22:27:32,690 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:27:32,691 -     || unique taglist code: 74
+2023-12-22 22:27:32,692 -     || seen taglist code: 74
+2023-12-22 22:27:32,693 -     || MOST used trncode: 81
+2023-12-22 22:27:32,694 -     || MOST used devcode: 74
+2023-12-22 22:27:32,803 -     || saved model
+2023-12-22 22:27:32,806 - 
+2023-12-22 22:27:32,807 - #epc: 35
+2023-12-22 22:27:33,022 - epc:35, epc_KL:  1.000000
+2023-12-22 22:33:54,713 - exact_match_tst_copy_acc: 0.346
+2023-12-22 22:33:54,714 - exact_match_tst_reinflection_wlemma: 0.022
+2023-12-22 22:33:54,715 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.021
+2023-12-22 22:33:54,716 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.027
+2023-12-22 22:33:55,042 - TRN || epcloss: 0.3536
+2023-12-22 22:33:55,043 -     || Q: 0.1982
+2023-12-22 22:33:55,044 -     || KL: 0.3195
+2023-12-22 22:33:55,045 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:33:55,046 -     || unique taglist code: 82
+2023-12-22 22:33:55,047 - DEV || epcloss: 0.1512
+2023-12-22 22:33:55,048 -     || Q: 0.1748
+2023-12-22 22:33:55,049 -     || KL: 0.6407
+2023-12-22 22:33:55,050 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:33:55,051 -     || unique taglist code: 74
+2023-12-22 22:33:55,052 -     || seen taglist code: 74
+2023-12-22 22:33:55,053 -     || MOST used trncode: 82
+2023-12-22 22:33:55,184 -     || saved model
+2023-12-22 22:33:55,185 - 
+2023-12-22 22:33:55,186 - #epc: 36
+2023-12-22 22:33:55,381 - epc:36, epc_KL:  1.000000
+2023-12-22 22:40:09,222 - exact_match_tst_copy_acc: 0.387
+2023-12-22 22:40:09,223 - exact_match_tst_reinflection_wlemma: 0.035
+2023-12-22 22:40:09,224 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.028
+2023-12-22 22:40:09,225 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.037
+2023-12-22 22:40:09,512 - TRN || epcloss: 0.3017
+2023-12-22 22:40:09,513 -     || Q: 0.2110
+2023-12-22 22:40:09,514 -     || KL: 0.3005
+2023-12-22 22:40:09,515 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:40:09,516 -     || unique taglist code: 82
+2023-12-22 22:40:09,517 - DEV || epcloss: 0.1536
+2023-12-22 22:40:09,518 -     || Q: 0.1907
+2023-12-22 22:40:09,519 -     || KL: 0.5738
+2023-12-22 22:40:09,520 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:40:09,521 -     || unique taglist code: 77
+2023-12-22 22:40:09,522 -     || seen taglist code: 77
+2023-12-22 22:40:09,523 -     || MOST used devcode: 77
+2023-12-22 22:40:09,644 -     || saved model
+2023-12-22 22:40:09,647 - 
+2023-12-22 22:40:09,648 - #epc: 37
+2023-12-22 22:40:09,850 - epc:37, epc_KL:  1.000000
+2023-12-22 22:46:32,474 - exact_match_tst_copy_acc: 0.242
+2023-12-22 22:46:32,475 - exact_match_tst_reinflection_wlemma: 0.022
+2023-12-22 22:46:32,476 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.019
+2023-12-22 22:46:32,476 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.026
+2023-12-22 22:46:32,785 - TRN || epcloss: 0.2538
+2023-12-22 22:46:32,786 -     || Q: 0.2093
+2023-12-22 22:46:32,787 -     || KL: 0.2565
+2023-12-22 22:46:32,788 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:46:32,789 -     || unique taglist code: 82
+2023-12-22 22:46:32,790 - DEV || epcloss: 0.2318
+2023-12-22 22:46:32,791 -     || Q: 0.2294
+2023-12-22 22:46:32,792 -     || KL: 1.7082
+2023-12-22 22:46:32,793 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:46:32,794 -     || unique taglist code: 70
+2023-12-22 22:46:32,794 -     || seen taglist code: 70
+2023-12-22 22:46:32,891 -     || saved model
+2023-12-22 22:46:32,894 - 
+2023-12-22 22:46:32,895 - #epc: 38
+2023-12-22 22:46:33,111 - epc:38, epc_KL:  1.000000
+2023-12-22 22:53:16,207 - exact_match_tst_copy_acc: 0.002
+2023-12-22 22:53:16,208 - exact_match_tst_reinflection_wlemma: 0.000
+2023-12-22 22:53:16,209 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.000
+2023-12-22 22:53:16,210 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.000
+2023-12-22 22:53:16,441 - TRN || epcloss: 1.6390
+2023-12-22 22:53:16,442 -     || Q: 0.3771
+2023-12-22 22:53:16,443 -     || KL: 0.6543
+2023-12-22 22:53:16,444 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:53:16,445 -     || unique taglist code: 81
+2023-12-22 22:53:16,446 - DEV || epcloss: 1.2430
+2023-12-22 22:53:16,447 -     || Q: 0.3283
+2023-12-22 22:53:16,448 -     || KL: 0.9226
+2023-12-22 22:53:16,449 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 22:53:16,450 -     || unique taglist code: 37
+2023-12-22 22:53:16,451 -     || seen taglist code: 37
+2023-12-22 22:53:16,578 -     || saved model
+2023-12-22 22:53:16,580 - 
+2023-12-22 22:53:16,581 - #epc: 39
+2023-12-22 22:53:16,790 - epc:39, epc_KL:  1.000000
+2023-12-22 23:00:07,771 - exact_match_tst_copy_acc: 0.000
+2023-12-22 23:00:07,772 - exact_match_tst_reinflection_wlemma: 0.000
+2023-12-22 23:00:07,773 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.000
+2023-12-22 23:00:07,774 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.000
+2023-12-22 23:00:08,012 - TRN || epcloss: 5.1850
+2023-12-22 23:00:08,013 -     || Q: 0.4364
+2023-12-22 23:00:08,014 -     || KL: 1645.7756
+2023-12-22 23:00:08,015 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:00:08,016 -     || unique taglist code: 82
+2023-12-22 23:00:08,017 - DEV || epcloss: 1.8142
+2023-12-22 23:00:08,018 -     || Q: 0.6310
+2023-12-22 23:00:08,019 -     || KL: 10.0606
+2023-12-22 23:00:08,020 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:00:08,021 -     || unique taglist code: 14
+2023-12-22 23:00:08,022 -     || seen taglist code: 14
+2023-12-22 23:00:08,136 -     || saved model
+2023-12-22 23:00:08,138 - 
+2023-12-22 23:00:08,139 - #epc: 40
+2023-12-22 23:00:08,354 - epc:40, epc_KL:  1.000000
+2023-12-22 23:06:41,230 - exact_match_tst_copy_acc: 0.001
+2023-12-22 23:06:41,231 - exact_match_tst_reinflection_wlemma: 0.001
+2023-12-22 23:06:41,231 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.001
+2023-12-22 23:06:41,232 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.001
+2023-12-22 23:06:41,513 - TRN || epcloss: 1.9662
+2023-12-22 23:06:41,514 -     || Q: 0.5413
+2023-12-22 23:06:41,514 -     || KL: 0.9409
+2023-12-22 23:06:41,515 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:06:41,516 -     || unique taglist code: 71
+2023-12-22 23:06:41,517 - DEV || epcloss: 1.2200
+2023-12-22 23:06:41,518 -     || Q: 0.8836
+2023-12-22 23:06:41,519 -     || KL: 2.9939
+2023-12-22 23:06:41,520 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:06:41,521 -     || unique taglist code: 47
+2023-12-22 23:06:41,521 -     || seen taglist code: 47
+2023-12-22 23:06:41,686 -     || saved model
+2023-12-22 23:06:41,689 - 
+2023-12-22 23:06:41,690 - #epc: 41
+2023-12-22 23:06:41,922 - epc:41, epc_KL:  1.000000
+2023-12-22 23:13:23,793 - exact_match_tst_copy_acc: 0.000
+2023-12-22 23:13:23,794 - exact_match_tst_reinflection_wlemma: 0.001
+2023-12-22 23:13:23,795 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.000
+2023-12-22 23:13:23,795 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.001
+2023-12-22 23:13:24,111 - TRN || epcloss: 1.5632
+2023-12-22 23:13:24,112 -     || Q: 0.9133
+2023-12-22 23:13:24,113 -     || KL: 0.8448
+2023-12-22 23:13:24,114 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:13:24,115 -     || unique taglist code: 58
+2023-12-22 23:13:24,116 - DEV || epcloss: 1.1935
+2023-12-22 23:13:24,117 -     || Q: 0.6642
+2023-12-22 23:13:24,119 -     || KL: 1.3434
+2023-12-22 23:13:24,120 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:13:24,121 -     || unique taglist code: 32
+2023-12-22 23:13:24,122 -     || seen taglist code: 31
+2023-12-22 23:13:24,316 -     || saved model
+2023-12-22 23:13:24,318 - 
+2023-12-22 23:13:24,320 - #epc: 42
+2023-12-22 23:13:24,527 - epc:42, epc_KL:  1.000000
+2023-12-22 23:20:10,899 - exact_match_tst_copy_acc: 0.002
+2023-12-22 23:20:10,900 - exact_match_tst_reinflection_wlemma: 0.001
+2023-12-22 23:20:10,901 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.001
+2023-12-22 23:20:10,902 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.001
+2023-12-22 23:20:11,129 - TRN || epcloss: 1.4343
+2023-12-22 23:20:11,130 -     || Q: 0.6654
+2023-12-22 23:20:11,131 -     || KL: 1.0282
+2023-12-22 23:20:11,132 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:20:11,133 -     || unique taglist code: 53
+2023-12-22 23:20:11,134 - DEV || epcloss: 1.0251
+2023-12-22 23:20:11,135 -     || Q: 0.5526
+2023-12-22 23:20:11,136 -     || KL: 1.0983
+2023-12-22 23:20:11,137 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:20:11,137 -     || unique taglist code: 25
+2023-12-22 23:20:11,138 -     || seen taglist code: 25
+2023-12-22 23:20:11,263 -     || saved model
+2023-12-22 23:20:11,265 - 
+2023-12-22 23:20:11,266 - #epc: 43
+2023-12-22 23:20:11,482 - epc:43, epc_KL:  1.000000
+2023-12-22 23:26:56,493 - exact_match_tst_copy_acc: 0.000
+2023-12-22 23:26:56,495 - exact_match_tst_reinflection_wlemma: 0.001
+2023-12-22 23:26:56,496 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.001
+2023-12-22 23:26:56,496 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.001
+2023-12-22 23:26:56,708 - TRN || epcloss: 1.2655
+2023-12-22 23:26:56,709 -     || Q: 0.7146
+2023-12-22 23:26:56,710 -     || KL: 0.3751
+2023-12-22 23:26:56,711 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:26:56,712 -     || unique taglist code: 78
+2023-12-22 23:26:56,713 - DEV || epcloss: 1.1664
+2023-12-22 23:26:56,714 -     || Q: 0.7896
+2023-12-22 23:26:56,715 -     || KL: 1.1146
+2023-12-22 23:26:56,716 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:26:56,717 -     || unique taglist code: 43
+2023-12-22 23:26:56,718 -     || seen taglist code: 43
+2023-12-22 23:26:56,832 -     || saved model
+2023-12-22 23:26:56,835 - 
+2023-12-22 23:26:56,836 - #epc: 44
+2023-12-22 23:26:57,049 - epc:44, epc_KL:  1.000000
+2023-12-22 23:33:47,137 - exact_match_tst_copy_acc: 0.001
+2023-12-22 23:33:47,139 - exact_match_tst_reinflection_wlemma: 0.000
+2023-12-22 23:33:47,140 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.000
+2023-12-22 23:33:47,140 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.000
+2023-12-22 23:33:47,394 - TRN || epcloss: 1.1848
+2023-12-22 23:33:47,395 -     || Q: 0.6183
+2023-12-22 23:33:47,396 -     || KL: 0.2845
+2023-12-22 23:33:47,397 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:33:47,398 -     || unique taglist code: 70
+2023-12-22 23:33:47,399 - DEV || epcloss: 0.8914
+2023-12-22 23:33:47,400 -     || Q: 0.5088
+2023-12-22 23:33:47,401 -     || KL: 0.4376
+2023-12-22 23:33:47,402 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:33:47,403 -     || unique taglist code: 39
+2023-12-22 23:33:47,404 -     || seen taglist code: 39
+2023-12-22 23:33:47,539 -     || saved model
+2023-12-22 23:33:47,541 - 
+2023-12-22 23:33:47,542 - #epc: 45
+2023-12-22 23:33:47,747 - epc:45, epc_KL:  1.000000
+2023-12-22 23:40:21,202 - exact_match_tst_copy_acc: 0.006
+2023-12-22 23:40:21,204 - exact_match_tst_reinflection_wlemma: 0.001
+2023-12-22 23:40:21,205 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.001
+2023-12-22 23:40:21,206 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.001
+2023-12-22 23:40:21,496 - TRN || epcloss: 0.9800
+2023-12-22 23:40:21,497 -     || Q: 0.5011
+2023-12-22 23:40:21,498 -     || KL: 0.2155
+2023-12-22 23:40:21,499 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:40:21,500 -     || unique taglist code: 59
+2023-12-22 23:40:21,501 - DEV || epcloss: 0.7203
+2023-12-22 23:40:21,502 -     || Q: 0.4351
+2023-12-22 23:40:21,503 -     || KL: 0.4039
+2023-12-22 23:40:21,504 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:40:21,505 -     || unique taglist code: 41
+2023-12-22 23:40:21,505 -     || seen taglist code: 41
+2023-12-22 23:40:21,612 -     || saved model
+2023-12-22 23:40:21,614 - 
+2023-12-22 23:40:21,615 - #epc: 46
+2023-12-22 23:40:21,835 - epc:46, epc_KL:  1.000000
+2023-12-22 23:46:47,340 - exact_match_tst_copy_acc: 0.006
+2023-12-22 23:46:47,342 - exact_match_tst_reinflection_wlemma: 0.002
+2023-12-22 23:46:47,343 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.002
+2023-12-22 23:46:47,344 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.002
+2023-12-22 23:46:47,679 - TRN || epcloss: 0.8322
+2023-12-22 23:46:47,680 -     || Q: 0.4339
+2023-12-22 23:46:47,681 -     || KL: 0.2100
+2023-12-22 23:46:47,682 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:46:47,683 -     || unique taglist code: 70
+2023-12-22 23:46:47,684 - DEV || epcloss: 0.6536
+2023-12-22 23:46:47,685 -     || Q: 0.4223
+2023-12-22 23:46:47,686 -     || KL: 0.5106
+2023-12-22 23:46:47,687 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:46:47,688 -     || unique taglist code: 41
+2023-12-22 23:46:47,688 -     || seen taglist code: 41
+2023-12-22 23:46:47,816 -     || saved model
+2023-12-22 23:46:47,818 - 
+2023-12-22 23:46:47,819 - #epc: 47
+2023-12-22 23:46:48,063 - epc:47, epc_KL:  1.000000
+2023-12-22 23:53:11,476 - exact_match_tst_copy_acc: 0.028
+2023-12-22 23:53:11,477 - exact_match_tst_reinflection_wlemma: 0.004
+2023-12-22 23:53:11,478 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.004
+2023-12-22 23:53:11,479 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.005
+2023-12-22 23:53:11,666 - TRN || epcloss: 0.7442
+2023-12-22 23:53:11,667 -     || Q: 0.3928
+2023-12-22 23:53:11,668 -     || KL: 0.2199
+2023-12-22 23:53:11,668 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:53:11,669 -     || unique taglist code: 75
+2023-12-22 23:53:11,670 - DEV || epcloss: 0.5586
+2023-12-22 23:53:11,671 -     || Q: 0.3492
+2023-12-22 23:53:11,673 -     || KL: 0.4480
+2023-12-22 23:53:11,674 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:53:11,676 -     || unique taglist code: 44
+2023-12-22 23:53:11,677 -     || seen taglist code: 44
+2023-12-22 23:53:11,812 -     || saved model
+2023-12-22 23:53:11,814 - 
+2023-12-22 23:53:11,815 - #epc: 48
+2023-12-22 23:53:12,020 - epc:48, epc_KL:  1.000000
+2023-12-22 23:59:40,129 - exact_match_tst_copy_acc: 0.005
+2023-12-22 23:59:40,130 - exact_match_tst_reinflection_wlemma: 0.002
+2023-12-22 23:59:40,131 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.002
+2023-12-22 23:59:40,132 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.002
+2023-12-22 23:59:40,391 - TRN || epcloss: 1.1477
+2023-12-22 23:59:40,392 -     || Q: 0.4771
+2023-12-22 23:59:40,393 -     || KL: 0.3225
+2023-12-22 23:59:40,394 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:59:40,395 -     || unique taglist code: 74
+2023-12-22 23:59:40,396 - DEV || epcloss: 0.7234
+2023-12-22 23:59:40,397 -     || Q: 0.4022
+2023-12-22 23:59:40,398 -     || KL: 0.6478
+2023-12-22 23:59:40,399 -     || token_match: 0.000, exact_match: 0.000
+2023-12-22 23:59:40,400 -     || unique taglist code: 29
+2023-12-22 23:59:40,401 -     || seen taglist code: 29
+2023-12-22 23:59:40,540 -     || saved model
+2023-12-22 23:59:40,543 - 
+2023-12-22 23:59:40,543 - #epc: 49
+2023-12-22 23:59:40,758 - epc:49, epc_KL:  1.000000
+2023-12-23 00:06:03,463 - exact_match_tst_copy_acc: 0.033
+2023-12-23 00:06:03,465 - exact_match_tst_reinflection_wlemma: 0.005
+2023-12-23 00:06:03,466 - exact_match_tst_reinflection_wlemma_TAGFINDER1: 0.005
+2023-12-23 00:06:03,466 - exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: 0.006
+2023-12-23 00:06:03,735 - TRN || epcloss: 0.7206
+2023-12-23 00:06:03,736 -     || Q: 0.2989
+2023-12-23 00:06:03,737 -     || KL: 0.2307
+2023-12-23 00:06:03,738 -     || token_match: 0.000, exact_match: 0.000
+2023-12-23 00:06:03,738 -     || unique taglist code: 59
+2023-12-23 00:06:03,739 - DEV || epcloss: 0.4985
+2023-12-23 00:06:03,740 -     || Q: 0.2459
+2023-12-23 00:06:03,741 -     || KL: 0.4721
+2023-12-23 00:06:03,742 -     || token_match: 0.000, exact_match: 0.000
+2023-12-23 00:06:03,743 -     || unique taglist code: 30
+2023-12-23 00:06:03,744 -     || seen taglist code: 30
+2023-12-23 00:06:03,876 -     || saved model

@@ -9,24 +9,43 @@ from unsup.model_v2 import VQVAE
 from util import accuracy_on_batch, decode_batch
 
 BATCHSIZE = 64
-EPOCHS = 200
+EPOCHS = 50
 LR = 0.0005
-KL_WEIGHT = 0.1
 KL_ANNEAL_EPC = 10
 KL_START_EPC = 5
 ENC_NH = 256
-DEC_NH = 350
+DEC_NH = 1024
 Z_LEMMA_NH = 100
 Z_TAG_NH = 128
-
-NUM_CODEBOOK = 2
-NUM_CODEBOOK_ENTRIES = 10
 BIDIRECTIONAL = True
 
+import argparse
+argParser = argparse.ArgumentParser()
+argParser.add_argument("--numcodebook", help="numcodebook")
+argParser.add_argument("--numentry", help="numentry")
+argParser.add_argument("--runid", help="numentry")
+argParser.add_argument("--dataset", help="datatype")
+argParser.add_argument("--klweight", help="datatype")
+
+args = argParser.parse_args()
+NUM_CODEBOOK = int(args.numcodebook)
+NUM_CODEBOOK_ENTRIES = int(args.numentry)
+RUNID = int(args.runid)
+DATASET_TYPE = args.dataset
+KL_WEIGHT = float(args.klweight)
+
 DEC_DROPOUT = 0.2
-INPUT_EMB_DIM = 64
-TRN_ID = "v2_BI"+str(BIDIRECTIONAL)+"_"+str(NUM_CODEBOOK)+"x"+str(NUM_CODEBOOK_ENTRIES)+"_UtrNOUN_zLEM"+str(Z_LEMMA_NH)+"_zTAG"+ str(Z_TAG_NH)+ "_decnh"+str(DEC_NH)+"_kl"+str(KL_WEIGHT)+"_epc"+str(KL_ANNEAL_EPC)+"_strt"+str(KL_START_EPC)+"_decdo"+str(DEC_DROPOUT)+"_inpemb"+str(INPUT_EMB_DIM)+"_bsize"+str(BATCHSIZE)
-path = 'results/vqvae/unsup/'+str(TRN_ID)
+INPUT_EMB_DIM = 128
+TRN_ID = 'run'+str(RUNID)+"_"+str(NUM_CODEBOOK)+"x"+str(NUM_CODEBOOK_ENTRIES)+"_zLEM"+str(Z_LEMMA_NH)+"_zTAG"+ str(Z_TAG_NH)+ "_decnh"+str(DEC_NH)+"_kl"+str(KL_WEIGHT)+"_epc"+str(KL_ANNEAL_EPC)+"_strt"+str(KL_START_EPC)+"_decdo"+str(DEC_DROPOUT)+"_inpemb"+str(INPUT_EMB_DIM)+"_bsize"+str(BATCHSIZE)
+
+if DATASET_TYPE == 'all':
+    path = 'results/vqvae/unsup/all/'+str(TRN_ID)
+    ffile = '/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold'
+elif DATASET_TYPE == 'verbs':
+    path = 'results/vqvae/unsup/verbs/'+str(TRN_ID)
+    ffile = '/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_VERBS'
+
+
 try:
     shutil.rmtree(path)
 except OSError as error:
@@ -41,29 +60,49 @@ except OSError as error:
 writer = SummaryWriter(comment="_VQVAE_TRNID_"+str(TRN_ID))
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+tags_to_entries = dict()
+word_tags = dict()
 
-import json
 
+with open(ffile) as reader:
+    for line in reader:
+        line = line.strip()
+        lemma, tgt, tags = line.split('\t')
+        word_tags[tgt] = tags
+        tags_to_entries[tags] = defaultdict(lambda:0)
 
 def config():
     logging.basicConfig(handlers=[
             logging.FileHandler(path+"/training_vqvae.log"),
             logging.StreamHandler()],
             format='%(asctime)s - %(message)s', level=logging.INFO)
-    trainset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur/tur_filtered_duplicates_merged_stdata_NOUNS_shuffled")
-    devset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_NOUNS", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
-    tstset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_NOUNS", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
+    
+    if DATASET_TYPE == 'all':
+        trainset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur/tur_filtered_duplicates_removed_stdata_SHUFFLED_TURLARGE_MERGED")
+        devset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
+        tstset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
+    elif DATASET_TYPE == 'verbs':
+        trainset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur/all_verbs.merged")
+        devset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_VERBS", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
+        tstset = MorphDataset("/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_VERBS", charvocab=trainset.charvocab, tagsvocab=trainset.tagsvocab)
 
-    maxtrnsize = 512000
+    maxtrnsize = 600000
+    maxdevsize = 2000
+    maxtstsize = 2000
+
     trainset.lemmas = trainset.lemmas[:maxtrnsize]
     trainset.tgts = trainset.tgts[:maxtrnsize]
     trainset.tagslist = trainset.tagslist[:maxtrnsize]
   
-    maxdevsize = maxtrnsize
     devset.lemmas = devset.lemmas[:maxdevsize]
     devset.tgts = devset.tgts[:maxdevsize]
     devset.tagslist = devset.tagslist[:maxdevsize]
       
+    maxtstsize = maxtstsize
+    tstset.lemmas = tstset.lemmas[:maxtstsize]
+    tstset.tgts = tstset.tgts[:maxtstsize]
+    tstset.tagslist = tstset.tagslist[:maxtstsize]
+
     logging.info("trnsize: %d" % len(trainset.tgts))
     logging.info("devsize: %d" % len(devset.tgts))
     logging.info("tstsize: %d" % len(tstset.tgts))
@@ -155,7 +194,7 @@ def config():
 
 
     trnbatches = prepare_batches_with_no_pad(trainset,batchsize=BATCHSIZE)
-    devbatches = prepare_batches_with_no_pad(tstset, batchsize=BATCHSIZE)
+    devbatches = prepare_batches_with_no_pad(devset, batchsize=BATCHSIZE)
     tstbatches = prepare_batches_with_no_pad_wlemmas(tstset, batchsize=1)
     _trnbatches = None
     dictmeta = []
@@ -188,9 +227,18 @@ def config():
         json.dump(trainset.charvocab.id2char, outfile, ensure_ascii=False, indent=4)
 
     for tag,vocab in trainset.tagsvocab.vocabs.items():
-        with open(path+"/"+tag+"_vocab.json", "w") as outfile:
+        with open(path+"/"+"vocab_"+tag+".json", "w") as outfile:
             json.dump(vocab.id2tag, outfile, ensure_ascii=False, indent=4)
     return model, opt, trnbatches, devbatches, tstbatches, trainset.charvocab, _trnbatches
+
+
+    
+
+def get_kth_element(dict,K):
+    if len(dict) < K:
+        K = len(dict)
+    return [key for key in {k: v for k, v in sorted(dict.items(), key=lambda item: item[1])}.keys()][K-1]
+
 
 
 def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches):
@@ -253,9 +301,9 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
         qjson_trn = dict()
         for bid in keys:
             batch = trnbatches[bid]
-            tgt,tags = batch
+            tgt,_ = batch
             opt.zero_grad()
-            batchloss, nonpadded_tokens, predtokens, Q, KL, quantized_indices, _, q_selections, quantized_codes = model(tgt, tags)
+            batchloss, nonpadded_tokens, predtokens, Q, KL, quantized_indices, _, quantized_codes = model(tgt)
 
             for t in range(quantized_codes.shape[0]):
                 code =   "-".join([str(i) for i in quantized_codes[t].tolist()])
@@ -270,7 +318,9 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
             opt.step()
             epc_loss['trn']+= batchloss.item()
             epc_nonpaddedtokens['trn'] += nonpadded_tokens
-            tokens_match, _, exact_match = accuracy_on_batch(predtokens, tgt[:,1:])
+            #tokens_match, _, exact_match = accuracy_on_batch(predtokens, tgt[:,1:])
+            tokens_match = 0
+            exact_match = 0
             epc_exactmatch['trn'] += exact_match
             epc_tokensmatch['trn'] += tokens_match
             epc_q_loss['trn'] += Q
@@ -283,22 +333,22 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
                           epc_q_indices['trn'][idx] = defaultdict(lambda:0)
                     epc_q_indices['trn'][idx][q] +=qlist.count(q)
         #-end of trn
-        with open(path+'/qinds_trn_epc'+str(epc)+'.json', 'w') as fp:
-            json.dump(qjson_trn, fp, ensure_ascii=False, indent = 4)
+        #with open(path+'/qinds_trn_epc'+str(epc)+'.json', 'w') as fp:
+        #    json.dump(qjson_trn, fp, ensure_ascii=False, indent = 4)
      
         ## dev (teacher forcing)
         model.eval()
         for bid, batch in devbatches.items():
-            tgt,tags = batch
-            batchloss, nonpadded_tokens, predtokens, Q, KL, quantized_indices, _,q_selections, quantized_codes = model(tgt, tags)
-            
+            tgt,_ = batch
+            batchloss, nonpadded_tokens, predtokens, Q, KL, quantized_indices, _, quantized_codes = model(tgt)
             for t in range(quantized_codes.shape[0]):
                 code =   "-".join([str(i) for i in quantized_codes[t].tolist()])
                 epc_q_codes['dev'][code] +=1
-
             epc_loss['dev']+= batchloss.item()
             epc_nonpaddedtokens['dev'] += nonpadded_tokens
-            tokens_match, _, exact_match = accuracy_on_batch(predtokens, tgt[:,1:])
+            #tokens_match, _, exact_match = accuracy_on_batch(predtokens, tgt[:,1:])
+            tokens_match = 0
+            exact_match = 0
             epc_exactmatch['dev'] += exact_match
             epc_tokensmatch['dev'] += tokens_match
             epc_q_loss['dev'] += Q
@@ -312,105 +362,139 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
                     epc_q_indices['dev'][idx][q] +=qlist.count(q)
 
 
-        ## Copy dev with one-step at a time
+        ## Copy & Reinflect tst with one-step at a time
         out_df = pd.DataFrame({})
         exact_match_tst_acc=0
+        exact_match_tst_reinflection_wlemma = 0
+        exact_match_tst_reinflection_wlemma_TAGFINDER1 = 0
+        exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2 = 0
+
         i=0
         qjson = dict()
         qjsons = dict()
         qjsons[0] = dict()
         qjsons[1] = dict()
-        #qjsons[2] = dict()
+        qjsons[2] = dict()
+        qjsons[3] = dict()
+        qjsons[4] = dict()
+        qjsons[5] = dict()
+        qjsons[6] = dict()
+        qjsons[7] = dict()
+        qjsons[8] = dict()
+        qjsons[9] = dict()
+        qjsons[10] = dict()
+        qjsons[11] = dict()
+        qjsons[12] = dict()
+        qjsons[13] = dict()
+        qjsons[14] = dict()
+        qjsons[15] = dict()
+
+        #flush dicts
+        for k,v in tags_to_entries.items():
+            tags_to_entries[k] = defaultdict(lambda:0)
 
         for bid, batch in tstbatches.items():
-            tgt,tags,lemma = batch
-            predtokens, quantized_indices = model.decode(tgt,tags)
-            QIDS = ';'.join([str(qi.item()) for qi in quantized_indices])
-            lemmas = decode_batch(lemma[:,1:], charvocab)
-            gold_decoded = decode_batch(tgt[:,1:], charvocab)
-            pred_decoded = decode_batch(predtokens, charvocab)
-            if QIDS not in qjson:
-                qjson[QIDS] = []
-            qjson[QIDS].append(gold_decoded[0])
+            tgt,_,lemma = batch
+            lemmas       = decode_batch(lemma[:,1:], charvocab)[0]
+            gold_decoded = decode_batch(tgt[:,1:], charvocab)[0]
+            out_df.at[i, "lemma"] = lemmas
+            out_df.at[i, "gold"] = gold_decoded
 
-            for di in range(len(QIDS.split(';'))):
-                if QIDS.split(';')[di] not in qjsons[di]:
-                    qjsons[di][QIDS.split(';')[di]] = []
-                qjsons[di][QIDS.split(';')[di]].append(gold_decoded[0])
+            ## Copy the tgt
+            predtokens1, quantized_indices1 = model.decode(tgt)
+            key1 = ';'.join([str(qi.item()) for qi in quantized_indices1])
+            if key1 not in qjson:
+                qjson[key1] = []
+            qjson[key1].append(gold_decoded)
+            for di in range(len(key1.split(';'))):
+                if key1.split(';')[di] not in qjsons[di]:
+                    qjsons[di][key1.split(';')[di]] = []
+                qjsons[di][key1.split(';')[di]].append(gold_decoded)
+            pred1        = decode_batch(predtokens1, charvocab)[0]
+            out_df.at[i, "COPY_pred"] =pred1
+            out_df.at[i, "COPY_selected_indices"] = key1
+            if gold_decoded == pred1:
+                out_df.at[i, "exact_match"] = 1
+                exact_match_tst_acc+=1
+            else:
+                out_df.at[i, "exact_match"] = 0
 
-            """_predtokens = torch.cat((torch.tensor([2]).to('cuda'),predtokens[0]))
-            predcount = '-'.join([str(sl) for sl in [l.item() for  l in _predtokens]])
-            tgtcount = '-'.join([str(sl) for sl in [l.item() for  l in tgt[0]]])
-            tagscount = '-'.join([str(sl) for sl in [l.item() for  l in tags[0]]])
-            lcount = '-'.join([str(sl) for sl in [l.item() for  l in lemma[0]]])"""
-            for g,p,l in zip(gold_decoded, pred_decoded, lemmas):
-                if g == p:
-                    out_df.at[i, "exact_match"] = 1
-                    exact_match_tst_acc+=1
-                else:
-                    out_df.at[i, "exact_match"] = 0
-                out_df.at[i, "lemma"] = l
-                out_df.at[i, "gold"] = g
-                out_df.at[i, "pred"] = p
-                out_df.at[i, "selected_indices"] = ';'.join([str(qi.item()) for qi in quantized_indices])
-                """out_df.at[i, "# pred seen in trn"]  = _trn_tgts[predcount]
-                out_df.at[i, "# tgt seen in trn"]   = _trn_tgts[tgtcount]
-                out_df.at[i, "# tags seen in trn"]  = _trn_tags[tagscount]
-                out_df.at[i, "# lemma seen in trn"] = _trn_lemmas[lcount]"""
-                i+=1
-            if i>500:
-                break
-            out_df.to_csv(path+'/tst_copies_'+str(epc)+'.csv')
-        tst_acc = exact_match_tst_acc / i
-        logging.info("exact_match_tst_copy_acc: %.3f" % tst_acc)
-        writer.add_scalar('exact_match_tst_copy_acc', tst_acc, epc)
+            ## Reinflect lemma with tgt tags
+            predtokens2, quantized_indices2 = model.reinflect(lemma,tgt)
+            pred2 = decode_batch(predtokens2, charvocab)[0]
+            out_df.at[i, "REINF_wlemma"] = pred2
+            key2 = ';'.join([str(qi.item()) for qi in quantized_indices2])
+            out_df.at[i, "REINF_wlemma_selected_indices"] = key2
+            if gold_decoded == pred2:
+                exact_match_tst_reinflection_wlemma +=1
+                out_df.at[i, "REINF_wlemma_em"] = 1
+            else:
+                out_df.at[i, "REINF_wlemma_em"] = 0
+
+            ## Reinflect lemma with tag finder
+            GOLD_TAG = word_tags[gold_decoded[:-4]]
+            tags_to_entries[GOLD_TAG][key2] +=1
+            FOUND_TAG_1 = get_kth_element(tags_to_entries[GOLD_TAG], 1)
+            FOUND_TAG_2 = get_kth_element(tags_to_entries[GOLD_TAG], 2)
+            
+     
+            FOUND_TAG_1 = [torch.tensor(int(i)) for i in FOUND_TAG_1.split(';')]
+            predtokens3, quantized_indices3 = model.reinflect(lemma, tgt, FOUND_TAG_1)
+            pred3 = decode_batch(predtokens3, charvocab)[0]
+            out_df.at[i, "REINF_TAGFINDER1_pred"] = pred3
+            key3 = ';'.join([str(qi.item()) for qi in quantized_indices3])
+            out_df.at[i, "REINF_TAGFINDER1_selected_indices"] = key3
+            if gold_decoded == pred3:
+                exact_match_tst_reinflection_wlemma_TAGFINDER1 +=1
+                exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2 +=1
+                out_df.at[i, "REINF_TAGFINDER1_em"] = 1
+            else:
+                out_df.at[i, "REINF_TAGFINDER1_em"] = 0
+            out_df.at[i, "IS_REINF1_EQUAL"] = (pred2 == pred3)
+
+
+            FOUND_TAG_2 = [torch.tensor(int(i)) for i in FOUND_TAG_2.split(';')]
+            predtokens4, quantized_indices4 = model.reinflect(lemma, tgt, FOUND_TAG_2)
+            pred4 = decode_batch(predtokens4, charvocab)[0]
+            out_df.at[i, "REINF_TAGFINDER2_pred"] = pred4
+            key4 = ';'.join([str(qi.item()) for qi in quantized_indices4])
+            out_df.at[i, "REINF_TAGFINDER2_selected_indices"] = key4
+            if  (gold_decoded != pred3) and (gold_decoded == pred4):
+                exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2 +=1
+                out_df.at[i, "REINF_TAGFINDER1_or_2_em"] = 1
+            elif (gold_decoded != pred3) and (gold_decoded != pred4):
+                out_df.at[i, "REINF_TAGFINDER1_or_2_em"] = 0
+            out_df.at[i, "IS_REINF2_EQUAL"] = (pred2 == pred4)
+
+            i+=1
+
+        out_df.to_csv(path+'/tst_results_'+str(epc)+'.csv')
+        
+        
+        # dump dictionary selections
         with open(path+'/qinds_tst_epc'+str(epc)+'.json', 'w') as fp:
             json.dump(qjson, fp, ensure_ascii=False, indent = 4)
+        #with open(path+'/qinds0_tst_epc'+str(epc)+'.json', 'w') as fp:
+        #    json.dump(qjsons[0], fp, ensure_ascii=False, indent = 4)
+        #with open(path+'/qinds1_tst_epc'+str(epc)+'.json', 'w') as fp:
+        #    json.dump(qjsons[1], fp, ensure_ascii=False, indent = 4)
 
-        with open(path+'/qinds0_tst_epc'+str(epc)+'.json', 'w') as fp:
-            json.dump(qjsons[0], fp, ensure_ascii=False, indent = 4)
-        with open(path+'/qinds1_tst_epc'+str(epc)+'.json', 'w') as fp:
-            json.dump(qjsons[1], fp, ensure_ascii=False, indent = 4)
-        #with open(path+'/qinds2_tst_epc'+str(epc)+'.json', 'w') as fp:
-        #    json.dump(qjsons[2], fp, ensure_ascii=False, indent = 4)
+       
+        logging.info("exact_match_tst_copy_acc: %.3f" % ( exact_match_tst_acc / i))
+        logging.info('exact_match_tst_reinflection_wlemma: %.3f'           % (exact_match_tst_reinflection_wlemma/i))
+        logging.info('exact_match_tst_reinflection_wlemma_TAGFINDER1: %.3f' % (exact_match_tst_reinflection_wlemma_TAGFINDER1/i))
+        logging.info('exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2: %.3f' % (exact_match_tst_reinflection_wlemma_TAGFINDER1_or_2/i))
 
-        ## Reinflect tst words - just expecting to see some reinflected lemma
-        exact_match_tst_dictsupervised_wlemma = 0
-        out_df = pd.DataFrame({})
-        i=0
-        for bid, batch in tstbatches.items():
-            tgt,tags,lemma = batch
-            predtokens, _ = model.decode(lemma,tags, mode='dict-supervised')
-            lemmas = decode_batch(lemma[:,1:], charvocab)
-            gold_decoded_batches = decode_batch(tgt[:,1:], charvocab)
-            pred_decoded_batches = decode_batch(predtokens, charvocab)
-            for g,p,l in zip(gold_decoded_batches, pred_decoded_batches, lemmas):
-                out_df.at[i, "gold"] = g
-                out_df.at[i, "pred"] = p
-                out_df.at[i, "lemma"] = l
-                centry = ""
-                for k in range(len(tags[0])):
-                    centry += str(tags[0][k].item()) + "-"
-                out_df.at[i, "FULL_codebook_entry"] = centry
-                i+=1
-            if bid == 200:
-                break
-        out_df.to_csv(path+'/tst_reinflections_epc'+str(epc)+'.csv')
+        writer.add_scalar('exact_match_tst_copy', (exact_match_tst_acc/i), epc)
+        writer.add_scalar('exact_match_tst_reinf_tgt', (exact_match_tst_reinflection_wlemma/i), epc)
         
         ## Sample words with different lemmas
         out_df = pd.DataFrame({})
-        entries =  [2,3,4,2,4,2,2,3,0,2,0]
         for i in range(50):
-            predtokens = model.sample(entries)
+            predtokens = model.sample()
             decoded_batches = decode_batch(predtokens, charvocab)
             out_df.at[i, "sampled"] = decoded_batches[0]
         out_df.to_csv(path+'/samples_epc'+str(epc)+'.csv')
-
-
-
-        #logging.info('exact_match_tst_dictsupervised_wlemma: %.3f' % (exact_match_tst_dictsupervised_wlemma/i))
-        #writer.add_scalar('reinflection_exact_match', (exact_match_tst_dictsupervised_wlemma/i), epc)
-
 
 
         ## log            
@@ -420,23 +504,13 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
         logging.info("    || KL: %.4f" % (epc_KL_loss['trn']/trnsize))
         logging.info("    || token_match: %.3f, exact_match: %.3f" % ((epc_tokensmatch['trn']/epc_nonpaddedtokens['trn']), (epc_exactmatch['trn']/trnsize)))
         logging.info("    || unique taglist code: %d" %  len(epc_q_codes['trn']))
-        # track number of different entry selections
-        #for dictidx, qdict in epc_q_indices['trn'].items():
-        #    logging.info("    || dict %d " % (dictidx))
-        #    for entry_id, count in  dict(sorted(qdict.items())).items():
-        #        logging.info("    || entry_id %d, ratio: %.3f" % (entry_id, count/sum(epc_q_indices['trn'][0].values())))
-       
 
         logging.info("DEV || epcloss: %.4f" % (epc_loss['dev']/epc_nonpaddedtokens['dev']))
         logging.info("    || Q: %.4f" % (epc_q_loss['dev']/devsize))
         logging.info("    || KL: %.4f" % (epc_KL_loss['dev']/devsize))
         logging.info("    || token_match: %.3f, exact_match: %.3f" % ((epc_tokensmatch['dev']/epc_nonpaddedtokens['dev']), (epc_exactmatch['dev']/devsize)))
         logging.info("    || unique taglist code: %d" %  len(epc_q_codes['dev']))
-        # track number of different entry selections
-        #for dictidx, qdict in epc_q_indices['dev'].items():
-        #    logging.info("    || dict %d " % (dictidx))
-        #    for entry_id, count in  dict(sorted(qdict.items())).items():
-        #        logging.info("    || entry_id %d, ratio: %.3f" % (entry_id, count/sum(epc_q_indices['dev'][0].values())))
+     
         seen_dev_code = 0
         for code, cnt in  epc_q_codes['dev'].items():
             if code in epc_q_codes['trn']:
@@ -462,9 +536,9 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
             best_epc = epc
         
         ## save
-        #if epc>30 and epc%3==0:
-            #torch.save(model.state_dict(), "results/vqvae/unsup/"+str(TRN_ID)+"/vqvae_"+str(epc)+".pt")
-            #logging.info("    || saved model")
+        #if epc<50:
+        torch.save(model.state_dict(), path+"/vqvae_"+str(epc)+".pt")
+        logging.info("    || saved model")
 
         writer.add_scalar('loss/train', epc_loss['trn']/ epc_nonpaddedtokens['trn'], epc)
         writer.add_scalar('loss/dev',   epc_loss['dev']/ epc_nonpaddedtokens['dev'], epc)
@@ -482,3 +556,4 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
 
 model, opt, trn, dev, tst, charvocab, _trnbatches = config()
 train(model, opt, trn, dev, tst, charvocab, _trnbatches)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

@@ -335,7 +335,6 @@ class Decoder_GRU_VQVAE(nn.Module):
         
         # (out: batchsize,ty, dec_nh), (h,c)
         out, hidden = self.layers[2](out, hidden)
-        out = self.layers[1](out) #dropoutlayer
         
         # (batchsize,ty,vocabsize)
         logits = self.layers[3](out)
