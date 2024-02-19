@@ -1,6 +1,6 @@
 import torch
 
-def accuracy_on_batch(x, tgt, charvocab):
+def accuracy_on_batch(x, tgt):
     true_tokens =  torch.sum((x ==tgt) * (tgt!=0))
     all_tokens  =  torch.sum(tgt!=0)
     exact_match = 0

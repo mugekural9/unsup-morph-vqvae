@@ -1,0 +1,310 @@
+2024-01-05 15:28:16,770 - trnsize: 100000
+2024-01-05 15:28:16,771 - devsize: 1446
+2024-01-05 15:28:16,772 - tstsize: 1446
+2024-01-05 15:28:16,923 - Trn unique tgts: 100000
+2024-01-05 15:28:16,924 - Trn unique lemmas: 588
+2024-01-05 15:28:16,924 - Trn unique taglists: 703
+2024-01-05 15:28:16,925 - Dev unique tgts: 1446
+2024-01-05 15:28:16,925 - Dev unique lemmas: 536
+2024-01-05 15:28:16,926 - Dev unique taglists: 616
+2024-01-05 15:28:16,927 - Tst unique tgts: 1446
+2024-01-05 15:28:16,927 - Tst unique lemmas: 536
+2024-01-05 15:28:16,928 - Tst unique taglists: 616
+2024-01-05 15:28:16,928 - seen_dev_tgt: 0
+2024-01-05 15:28:16,929 - seen_dev_lemma: 1446
+2024-01-05 15:28:16,929 - seen_dev_taglist: 1446
+2024-01-05 15:28:16,930 - seen_tst_tgt: 0
+2024-01-05 15:28:16,931 - seen_tst_lemma: 1446
+2024-01-05 15:28:16,931 - seen_tst_taglist: 1446
+2024-01-05 15:28:21,982 - trnID: run1_4x8_zLEM100_zTAG128_decnh1024_kl1.0_epc10_strt5_decdo0.2_inpemb128_bsize128
+2024-01-05 15:28:21,983 - batchsize: 128
+2024-01-05 15:28:21,984 - epochs: 50
+2024-01-05 15:28:21,984 - lr: 0.00050
+2024-01-05 15:28:21,985 - KL_WEIGHT: 1.00000
+2024-01-05 15:28:21,986 - opt: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.5, 0.999)
+    capturable: False
+    eps: 1e-08
+    foreach: None
+    lr: 0.0005
+    maximize: False
+    weight_decay: 0
+)
+2024-01-05 15:28:21,987 - MSVAE(
+  (embed): Embedding(39, 300)
+  (encoder): MSVED_Encoder(
+    (embed): Embedding(39, 300)
+    (gru): GRU(300, 256, batch_first=True, bidirectional=True)
+    (dropout_in): Dropout(p=0.0, inplace=False)
+    (linear): Linear(in_features=512, out_features=300, bias=True)
+  )
+  (decoder): MSVED_Decoder(
+    (char_embed): Embedding(39, 300)
+    (dropout_in): Dropout(p=0.5, inplace=False)
+    (gru): GRU(650, 256, batch_first=True)
+    (attn): Linear(in_features=706, out_features=11, bias=True)
+    (attn_combine): Linear(in_features=650, out_features=650, bias=True)
+    (pred_linear): Linear(in_features=256, out_features=39, bias=True)
+    (loss): CrossEntropyLoss()
+  )
+  (z_to_dec): Linear(in_features=150, out_features=256, bias=True)
+  (tag_to_dec): Linear(in_features=200, out_features=256, bias=True)
+  (tag_embeddings): ModuleList(
+    (0): Embedding(3, 200)
+    (1): Embedding(5, 200)
+    (2): Embedding(5, 200)
+    (3): Embedding(8, 200)
+    (4): Embedding(5, 200)
+    (5): Embedding(4, 200)
+    (6): Embedding(3, 200)
+    (7): Embedding(4, 200)
+    (8): Embedding(3, 200)
+    (9): Embedding(5, 200)
+    (10): Embedding(3, 200)
+  )
+  (classifiers): ModuleList(
+    (0): Linear(in_features=512, out_features=3, bias=True)
+    (1): Linear(in_features=512, out_features=5, bias=True)
+    (2): Linear(in_features=512, out_features=5, bias=True)
+    (3): Linear(in_features=512, out_features=8, bias=True)
+    (4): Linear(in_features=512, out_features=5, bias=True)
+    (5): Linear(in_features=512, out_features=4, bias=True)
+    (6): Linear(in_features=512, out_features=3, bias=True)
+    (7): Linear(in_features=512, out_features=4, bias=True)
+    (8): Linear(in_features=512, out_features=3, bias=True)
+    (9): Linear(in_features=512, out_features=5, bias=True)
+    (10): Linear(in_features=512, out_features=3, bias=True)
+  )
+)
+2024-01-05 15:28:22,238 - trnsize: 100000
+2024-01-05 15:28:22,239 - devsize: 1446
+2024-01-05 15:28:22,240 - tstsize: 1446
+2024-01-05 15:28:22,240 - 
+2024-01-05 15:28:22,241 - #epc: 0
+2024-01-05 15:28:22,243 - epc:0, epc_KL:  0.000000
+2024-01-05 15:28:55,318 - epoch: 0, kl_weight: 0.00, tmp: 1.00
+2024-01-05 15:28:55,320 - Trn--- loss: 43.9745, labeled_pred_loss: 0.0069, labeled_pred_acc: 0.5706, labeled_recon_loss: 1.7764, labeled_kl_loss: 248.9925, labeled_reinflect_recon_acc: 0.4566
+2024-01-05 15:28:56,000 - Tst--- loss: 0.3841, labeled_pred_loss: 0.0186, labeled_pred_acc: 0.6113, labeled_recon_loss: 0.9302, labeled_kl_loss: 4.1552,  labeled_reinflect_recon_acc: 0.6978
+2024-01-05 15:29:18,791 - exact_match_tst_acc: 0.001
+2024-01-05 15:29:19,266 - 
+2024-01-05 15:29:19,267 - #epc: 1
+2024-01-05 15:29:19,268 - epc:1, epc_KL:  0.000000
+2024-01-05 15:29:53,236 - epoch: 1, kl_weight: 0.00, tmp: 1.00
+2024-01-05 15:29:53,238 - Trn--- loss: 21.1483, labeled_pred_loss: 0.0049, labeled_pred_acc: 0.7531, labeled_recon_loss: 0.7432, labeled_kl_loss: 383.1184, labeled_reinflect_recon_acc: 0.7608
+2024-01-05 15:29:53,821 - Tst--- loss: 0.2175, labeled_pred_loss: 0.0121, labeled_pred_acc: 0.9117, labeled_recon_loss: 0.4984, labeled_kl_loss: 6.4841,  labeled_reinflect_recon_acc: 0.8488
+2024-01-05 15:30:16,732 - exact_match_tst_acc: 0.026
+2024-01-05 15:30:17,270 - 
+2024-01-05 15:30:17,271 - #epc: 2
+2024-01-05 15:30:17,272 - epc:2, epc_KL:  0.000000
+2024-01-05 15:30:49,960 - epoch: 2, kl_weight: 0.01, tmp: 0.94
+2024-01-05 15:30:49,961 - Trn--- loss: 11.6240, labeled_pred_loss: 0.0034, labeled_pred_acc: 0.9562, labeled_recon_loss: 0.3580, labeled_kl_loss: 527.3724, labeled_reinflect_recon_acc: 0.8958
+2024-01-05 15:30:50,562 - Tst--- loss: 0.1135, labeled_pred_loss: 0.0100, labeled_pred_acc: 0.9869, labeled_recon_loss: 0.1818, labeled_kl_loss: 8.3265,  labeled_reinflect_recon_acc: 0.9552
+2024-01-05 15:31:14,085 - exact_match_tst_acc: 0.380
+2024-01-05 15:31:14,621 - 
+2024-01-05 15:31:14,622 - #epc: 3
+2024-01-05 15:31:14,623 - epc:3, epc_KL:  0.000000
+2024-01-05 15:31:47,868 - epoch: 3, kl_weight: 0.01, tmp: 0.94
+2024-01-05 15:31:47,869 - Trn--- loss: 6.7017, labeled_pred_loss: 0.0031, labeled_pred_acc: 0.9861, labeled_recon_loss: 0.1283, labeled_kl_loss: 615.7748, labeled_reinflect_recon_acc: 0.9708
+2024-01-05 15:31:48,452 - Tst--- loss: 0.0742, labeled_pred_loss: 0.0097, labeled_pred_acc: 0.9889, labeled_recon_loss: 0.0477, labeled_kl_loss: 9.2984,  labeled_reinflect_recon_acc: 0.9946
+2024-01-05 15:32:11,189 - exact_match_tst_acc: 0.905
+2024-01-05 15:32:11,738 - 
+2024-01-05 15:32:11,739 - #epc: 4
+2024-01-05 15:32:11,740 - epc:4, epc_KL:  0.000000
+2024-01-05 15:32:44,822 - epoch: 4, kl_weight: 0.02, tmp: 0.89
+2024-01-05 15:32:44,823 - Trn--- loss: 5.4211, labeled_pred_loss: 0.0031, labeled_pred_acc: 0.9875, labeled_recon_loss: 0.0648, labeled_kl_loss: 640.7983, labeled_reinflect_recon_acc: 0.9878
+2024-01-05 15:32:45,453 - Tst--- loss: 0.0653, labeled_pred_loss: 0.0096, labeled_pred_acc: 0.9903, labeled_recon_loss: 0.0185, labeled_kl_loss: 9.2112,  labeled_reinflect_recon_acc: 0.9988
+2024-01-05 15:33:08,982 - exact_match_tst_acc: 0.979
+2024-01-05 15:33:09,605 - 
+2024-01-05 15:33:09,606 - #epc: 5
+2024-01-05 15:33:09,607 - epc:5, epc_KL:  0.100000
+2024-01-05 15:33:43,292 - epoch: 5, kl_weight: 0.02, tmp: 0.89
+2024-01-05 15:33:43,293 - Trn--- loss: 11.2226, labeled_pred_loss: 0.0031, labeled_pred_acc: 0.9874, labeled_recon_loss: 0.1602, labeled_kl_loss: 39.2282, labeled_reinflect_recon_acc: 0.9476
+2024-01-05 15:33:43,925 - Tst--- loss: 0.1370, labeled_pred_loss: 0.0096, labeled_pred_acc: 0.9904, labeled_recon_loss: 0.1092, labeled_kl_loss: 0.4583,  labeled_reinflect_recon_acc: 0.9648
+2024-01-05 15:34:06,856 - exact_match_tst_acc: 0.934
+2024-01-05 15:34:07,619 - 
+2024-01-05 15:34:07,620 - #epc: 6
+2024-01-05 15:34:07,621 - epc:6, epc_KL:  0.200000
+2024-01-05 15:34:41,213 - epoch: 6, kl_weight: 0.03, tmp: 0.89
+2024-01-05 15:34:41,214 - Trn--- loss: 11.5943, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9882, labeled_recon_loss: 0.1660, labeled_kl_loss: 21.1059, labeled_reinflect_recon_acc: 0.9440
+2024-01-05 15:34:41,877 - Tst--- loss: 0.1561, labeled_pred_loss: 0.0095, labeled_pred_acc: 0.9909, labeled_recon_loss: 0.1490, labeled_kl_loss: 0.2689,  labeled_reinflect_recon_acc: 0.9503
+2024-01-05 15:35:05,060 - exact_match_tst_acc: 0.875
+2024-01-05 15:35:05,791 - 
+2024-01-05 15:35:05,792 - #epc: 7
+2024-01-05 15:35:05,793 - epc:7, epc_KL:  0.300000
+2024-01-05 15:35:39,318 - epoch: 7, kl_weight: 0.03, tmp: 0.84
+2024-01-05 15:35:39,319 - Trn--- loss: 11.7254, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9886, labeled_recon_loss: 0.1577, labeled_kl_loss: 15.0902, labeled_reinflect_recon_acc: 0.9458
+2024-01-05 15:35:39,913 - Tst--- loss: 0.1596, labeled_pred_loss: 0.0095, labeled_pred_acc: 0.9909, labeled_recon_loss: 0.1305, labeled_kl_loss: 0.2088,  labeled_reinflect_recon_acc: 0.9540
+2024-01-05 15:36:02,961 - exact_match_tst_acc: 0.905
+2024-01-05 15:36:03,654 - 
+2024-01-05 15:36:03,655 - #epc: 8
+2024-01-05 15:36:03,656 - epc:8, epc_KL:  0.400000
+2024-01-05 15:36:36,756 - epoch: 8, kl_weight: 0.04, tmp: 0.84
+2024-01-05 15:36:36,757 - Trn--- loss: 12.2381, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9887, labeled_recon_loss: 0.1619, labeled_kl_loss: 12.4067, labeled_reinflect_recon_acc: 0.9434
+2024-01-05 15:36:37,362 - Tst--- loss: 0.1693, labeled_pred_loss: 0.0095, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.1346, labeled_kl_loss: 0.1781,  labeled_reinflect_recon_acc: 0.9527
+2024-01-05 15:37:00,555 - exact_match_tst_acc: 0.868
+2024-01-05 15:37:01,206 - 
+2024-01-05 15:37:01,207 - #epc: 9
+2024-01-05 15:37:01,208 - epc:9, epc_KL:  0.500000
+2024-01-05 15:37:35,319 - epoch: 9, kl_weight: 0.04, tmp: 0.79
+2024-01-05 15:37:35,320 - Trn--- loss: 12.7706, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9888, labeled_recon_loss: 0.1753, labeled_kl_loss: 10.4797, labeled_reinflect_recon_acc: 0.9378
+2024-01-05 15:37:35,955 - Tst--- loss: 0.1824, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9910, labeled_recon_loss: 0.1677, labeled_kl_loss: 0.1498,  labeled_reinflect_recon_acc: 0.9398
+2024-01-05 15:37:59,081 - exact_match_tst_acc: 0.844
+2024-01-05 15:37:59,757 - 
+2024-01-05 15:37:59,757 - #epc: 10
+2024-01-05 15:37:59,758 - epc:10, epc_KL:  0.600000
+2024-01-05 15:38:33,116 - epoch: 10, kl_weight: 0.05, tmp: 0.79
+2024-01-05 15:38:33,117 - Trn--- loss: 13.3917, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9889, labeled_recon_loss: 0.2009, labeled_kl_loss: 8.9428, labeled_reinflect_recon_acc: 0.9274
+2024-01-05 15:38:33,818 - Tst--- loss: 0.1995, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9910, labeled_recon_loss: 0.2219, labeled_kl_loss: 0.1276,  labeled_reinflect_recon_acc: 0.9200
+2024-01-05 15:38:57,437 - exact_match_tst_acc: 0.651
+2024-01-05 15:38:58,162 - 
+2024-01-05 15:38:58,163 - #epc: 11
+2024-01-05 15:38:58,164 - epc:11, epc_KL:  0.700000
+2024-01-05 15:39:32,089 - epoch: 11, kl_weight: 0.05, tmp: 0.79
+2024-01-05 15:39:32,090 - Trn--- loss: 13.9508, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9889, labeled_recon_loss: 0.2393, labeled_kl_loss: 7.3958, labeled_reinflect_recon_acc: 0.9125
+2024-01-05 15:39:32,678 - Tst--- loss: 0.1997, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9909, labeled_recon_loss: 0.2405, labeled_kl_loss: 0.1021,  labeled_reinflect_recon_acc: 0.9108
+2024-01-05 15:39:55,806 - exact_match_tst_acc: 0.588
+2024-01-05 15:39:56,531 - 
+2024-01-05 15:39:56,532 - #epc: 12
+2024-01-05 15:39:56,533 - epc:12, epc_KL:  0.800000
+2024-01-05 15:40:29,129 - epoch: 12, kl_weight: 0.06, tmp: 0.74
+2024-01-05 15:40:29,130 - Trn--- loss: 14.3368, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9889, labeled_recon_loss: 0.2893, labeled_kl_loss: 5.7394, labeled_reinflect_recon_acc: 0.8931
+2024-01-05 15:40:29,766 - Tst--- loss: 0.2035, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.2941, labeled_kl_loss: 0.0751,  labeled_reinflect_recon_acc: 0.8907
+2024-01-05 15:40:53,106 - exact_match_tst_acc: 0.381
+2024-01-05 15:40:53,826 - 
+2024-01-05 15:40:53,827 - #epc: 13
+2024-01-05 15:40:53,828 - epc:13, epc_KL:  0.900000
+2024-01-05 15:41:26,812 - epoch: 13, kl_weight: 0.07, tmp: 0.74
+2024-01-05 15:41:26,813 - Trn--- loss: 14.4910, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9889, labeled_recon_loss: 0.3470, labeled_kl_loss: 4.0278, labeled_reinflect_recon_acc: 0.8714
+2024-01-05 15:41:27,412 - Tst--- loss: 0.2056, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.3466, labeled_kl_loss: 0.0525,  labeled_reinflect_recon_acc: 0.8702
+2024-01-05 15:41:50,637 - exact_match_tst_acc: 0.203
+2024-01-05 15:41:51,383 - 
+2024-01-05 15:41:51,384 - #epc: 14
+2024-01-05 15:41:51,385 - epc:14, epc_KL:  1.000000
+2024-01-05 15:42:24,007 - epoch: 14, kl_weight: 0.07, tmp: 0.70
+2024-01-05 15:42:24,008 - Trn--- loss: 14.5617, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9890, labeled_recon_loss: 0.4073, labeled_kl_loss: 2.5230, labeled_reinflect_recon_acc: 0.8493
+2024-01-05 15:42:24,664 - Tst--- loss: 0.2102, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.4280, labeled_kl_loss: 0.0287,  labeled_reinflect_recon_acc: 0.8415
+2024-01-05 15:42:50,327 - exact_match_tst_acc: 0.041
+2024-01-05 15:42:51,087 - 
+2024-01-05 15:42:51,087 - #epc: 15
+2024-01-05 15:42:51,089 - epc:15, epc_KL:  1.000000
+2024-01-05 15:43:24,847 - epoch: 15, kl_weight: 0.08, tmp: 0.70
+2024-01-05 15:43:24,848 - Trn--- loss: 14.3200, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9890, labeled_recon_loss: 0.4346, labeled_kl_loss: 1.7517, labeled_reinflect_recon_acc: 0.8386
+2024-01-05 15:43:25,509 - Tst--- loss: 0.2042, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.4330, labeled_kl_loss: 0.0213,  labeled_reinflect_recon_acc: 0.8369
+2024-01-05 15:43:49,320 - exact_match_tst_acc: 0.030
+2024-01-05 15:43:50,149 - 
+2024-01-05 15:43:50,150 - #epc: 16
+2024-01-05 15:43:50,151 - epc:16, epc_KL:  1.000000
+2024-01-05 15:44:23,528 - epoch: 16, kl_weight: 0.08, tmp: 0.70
+2024-01-05 15:44:23,529 - Trn--- loss: 14.1549, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9890, labeled_recon_loss: 0.4495, labeled_kl_loss: 1.2977, labeled_reinflect_recon_acc: 0.8325
+2024-01-05 15:44:24,154 - Tst--- loss: 0.2029, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9911, labeled_recon_loss: 0.4475, labeled_kl_loss: 0.0159,  labeled_reinflect_recon_acc: 0.8326
+2024-01-05 15:44:47,962 - exact_match_tst_acc: 0.013
+2024-01-05 15:44:48,737 - 
+2024-01-05 15:44:48,738 - #epc: 17
+2024-01-05 15:44:48,739 - epc:17, epc_KL:  1.000000
+2024-01-05 15:45:21,628 - epoch: 17, kl_weight: 0.09, tmp: 0.66
+2024-01-05 15:45:21,629 - Trn--- loss: 14.0445, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9892, labeled_recon_loss: 0.4613, labeled_kl_loss: 0.9598, labeled_reinflect_recon_acc: 0.8279
+2024-01-05 15:45:22,271 - Tst--- loss: 0.2036, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9912, labeled_recon_loss: 0.4652, labeled_kl_loss: 0.0116,  labeled_reinflect_recon_acc: 0.8270
+2024-01-05 15:45:52,196 - exact_match_tst_acc: 0.003
+2024-01-05 15:45:53,070 - 
+2024-01-05 15:45:53,070 - #epc: 18
+2024-01-05 15:45:53,071 - epc:18, epc_KL:  1.000000
+2024-01-05 15:46:26,609 - epoch: 18, kl_weight: 0.09, tmp: 0.66
+2024-01-05 15:46:26,610 - Trn--- loss: 13.9725, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9892, labeled_recon_loss: 0.4713, labeled_kl_loss: 0.6945, labeled_reinflect_recon_acc: 0.8242
+2024-01-05 15:46:27,297 - Tst--- loss: 0.2047, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9913, labeled_recon_loss: 0.4804, labeled_kl_loss: 0.0084,  labeled_reinflect_recon_acc: 0.8216
+2024-01-05 15:46:55,393 - exact_match_tst_acc: 0.003
+2024-01-05 15:46:56,255 - 
+2024-01-05 15:46:56,256 - #epc: 19
+2024-01-05 15:46:56,257 - epc:19, epc_KL:  1.000000
+2024-01-05 15:47:29,087 - epoch: 19, kl_weight: 0.10, tmp: 0.62
+2024-01-05 15:47:29,089 - Trn--- loss: 13.9028, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9892, labeled_recon_loss: 0.4790, labeled_kl_loss: 0.4794, labeled_reinflect_recon_acc: 0.8212
+2024-01-05 15:47:29,736 - Tst--- loss: 0.2038, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9913, labeled_recon_loss: 0.4853, labeled_kl_loss: 0.0062,  labeled_reinflect_recon_acc: 0.8177
+2024-01-05 15:48:03,037 - exact_match_tst_acc: 0.001
+2024-01-05 15:48:03,998 - 
+2024-01-05 15:48:03,999 - #epc: 20
+2024-01-05 15:48:04,000 - epc:20, epc_KL:  1.000000
+2024-01-05 15:48:37,016 - epoch: 20, kl_weight: 0.10, tmp: 0.62
+2024-01-05 15:48:37,017 - Trn--- loss: 13.8726, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9892, labeled_recon_loss: 0.4854, labeled_kl_loss: 0.3247, labeled_reinflect_recon_acc: 0.8185
+2024-01-05 15:48:37,721 - Tst--- loss: 0.2015, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9913, labeled_recon_loss: 0.4864, labeled_kl_loss: 0.0036,  labeled_reinflect_recon_acc: 0.8168
+2024-01-05 15:49:02,508 - exact_match_tst_acc: 0.002
+2024-01-05 15:49:03,344 - 
+2024-01-05 15:49:03,345 - #epc: 21
+2024-01-05 15:49:03,346 - epc:21, epc_KL:  1.000000
+2024-01-05 15:49:35,350 - epoch: 21, kl_weight: 0.11, tmp: 0.62
+2024-01-05 15:49:35,351 - Trn--- loss: 13.8239, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9892, labeled_recon_loss: 0.4884, labeled_kl_loss: 0.2183, labeled_reinflect_recon_acc: 0.8175
+2024-01-05 15:49:35,946 - Tst--- loss: 0.1997, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9913, labeled_recon_loss: 0.4839, labeled_kl_loss: 0.0025,  labeled_reinflect_recon_acc: 0.8175
+2024-01-05 15:49:59,261 - exact_match_tst_acc: 0.001
+2024-01-05 15:50:00,037 - 
+2024-01-05 15:50:00,038 - #epc: 22
+2024-01-05 15:50:00,039 - epc:22, epc_KL:  1.000000
+2024-01-05 15:50:33,433 - epoch: 22, kl_weight: 0.11, tmp: 0.58
+2024-01-05 15:50:33,434 - Trn--- loss: 13.7745, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9894, labeled_recon_loss: 0.4894, labeled_kl_loss: 0.1487, labeled_reinflect_recon_acc: 0.8168
+2024-01-05 15:50:34,078 - Tst--- loss: 0.1986, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9914, labeled_recon_loss: 0.4834, labeled_kl_loss: 0.0016,  labeled_reinflect_recon_acc: 0.8178
+2024-01-05 15:51:00,143 - exact_match_tst_acc: 0.001
+2024-01-05 15:51:00,953 - 
+2024-01-05 15:51:00,954 - #epc: 23
+2024-01-05 15:51:00,955 - epc:23, epc_KL:  1.000000
+2024-01-05 15:51:33,363 - epoch: 23, kl_weight: 0.12, tmp: 0.58
+2024-01-05 15:51:33,364 - Trn--- loss: 13.7480, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9897, labeled_recon_loss: 0.4907, labeled_kl_loss: 0.0987, labeled_reinflect_recon_acc: 0.8163
+2024-01-05 15:51:33,979 - Tst--- loss: 0.1992, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9918, labeled_recon_loss: 0.4874, labeled_kl_loss: 0.0011,  labeled_reinflect_recon_acc: 0.8164
+2024-01-05 15:52:01,433 - exact_match_tst_acc: 0.001
+2024-01-05 15:52:02,395 - 
+2024-01-05 15:52:02,396 - #epc: 24
+2024-01-05 15:52:02,397 - epc:24, epc_KL:  1.000000
+2024-01-05 15:52:35,681 - epoch: 24, kl_weight: 0.12, tmp: 0.55
+2024-01-05 15:52:35,682 - Trn--- loss: 13.7350, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9898, labeled_recon_loss: 0.4921, labeled_kl_loss: 0.0585, labeled_reinflect_recon_acc: 0.8154
+2024-01-05 15:52:36,294 - Tst--- loss: 0.1983, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9921, labeled_recon_loss: 0.4854, labeled_kl_loss: 0.0007,  labeled_reinflect_recon_acc: 0.8171
+2024-01-05 15:53:03,790 - exact_match_tst_acc: 0.000
+2024-01-05 15:53:04,653 - 
+2024-01-05 15:53:04,654 - #epc: 25
+2024-01-05 15:53:04,655 - epc:25, epc_KL:  1.000000
+2024-01-05 15:53:37,053 - epoch: 25, kl_weight: 0.13, tmp: 0.55
+2024-01-05 15:53:37,054 - Trn--- loss: 13.7068, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9901, labeled_recon_loss: 0.4914, labeled_kl_loss: 0.0430, labeled_reinflect_recon_acc: 0.8153
+2024-01-05 15:53:37,719 - Tst--- loss: 0.1979, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9924, labeled_recon_loss: 0.4848, labeled_kl_loss: 0.0005,  labeled_reinflect_recon_acc: 0.8171
+2024-01-05 15:54:02,273 - exact_match_tst_acc: 0.001
+2024-01-05 15:54:03,047 - 
+2024-01-05 15:54:03,048 - #epc: 26
+2024-01-05 15:54:03,049 - epc:26, epc_KL:  1.000000
+2024-01-05 15:54:36,307 - epoch: 26, kl_weight: 0.14, tmp: 0.55
+2024-01-05 15:54:36,308 - Trn--- loss: 13.6959, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9902, labeled_recon_loss: 0.4916, labeled_kl_loss: 0.0306, labeled_reinflect_recon_acc: 0.8152
+2024-01-05 15:54:36,957 - Tst--- loss: 0.1980, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9926, labeled_recon_loss: 0.4854, labeled_kl_loss: 0.0004,  labeled_reinflect_recon_acc: 0.8157
+2024-01-05 15:55:01,038 - exact_match_tst_acc: 0.000
+2024-01-05 15:55:01,799 - 
+2024-01-05 15:55:01,800 - #epc: 27
+2024-01-05 15:55:01,801 - epc:27, epc_KL:  1.000000
+2024-01-05 15:55:34,288 - epoch: 27, kl_weight: 0.14, tmp: 0.52
+2024-01-05 15:55:34,289 - Trn--- loss: 13.6872, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9907, labeled_recon_loss: 0.4911, labeled_kl_loss: 0.0287, labeled_reinflect_recon_acc: 0.8154
+2024-01-05 15:55:34,983 - Tst--- loss: 0.1977, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9950, labeled_recon_loss: 0.4847, labeled_kl_loss: 0.0003,  labeled_reinflect_recon_acc: 0.8184
+2024-01-05 15:56:03,188 - exact_match_tst_acc: 0.001
+2024-01-05 15:56:04,173 - 
+2024-01-05 15:56:04,174 - #epc: 28
+2024-01-05 15:56:04,175 - epc:28, epc_KL:  1.000000
+2024-01-05 15:56:36,627 - epoch: 28, kl_weight: 0.15, tmp: 0.52
+2024-01-05 15:56:36,628 - Trn--- loss: 13.6383, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9945, labeled_recon_loss: 0.4897, labeled_kl_loss: 0.0243, labeled_reinflect_recon_acc: 0.8159
+2024-01-05 15:56:37,275 - Tst--- loss: 0.1983, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9986, labeled_recon_loss: 0.4884, labeled_kl_loss: 0.0003,  labeled_reinflect_recon_acc: 0.8164
+2024-01-05 15:57:03,703 - exact_match_tst_acc: 0.001
+2024-01-05 15:57:04,561 - 
+2024-01-05 15:57:04,561 - #epc: 29
+2024-01-05 15:57:04,562 - epc:29, epc_KL:  1.000000
+2024-01-05 15:57:37,357 - epoch: 29, kl_weight: 0.15, tmp: 0.50
+2024-01-05 15:57:37,358 - Trn--- loss: 13.6186, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9958, labeled_recon_loss: 0.4895, labeled_kl_loss: 0.0227, labeled_reinflect_recon_acc: 0.8160
+2024-01-05 15:57:38,022 - Tst--- loss: 0.1970, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9985, labeled_recon_loss: 0.4837, labeled_kl_loss: 0.0003,  labeled_reinflect_recon_acc: 0.8170
+2024-01-05 15:58:05,243 - exact_match_tst_acc: 0.000
+2024-01-05 15:58:06,133 - 
+2024-01-05 15:58:06,134 - #epc: 30
+2024-01-05 15:58:06,135 - epc:30, epc_KL:  1.000000
+2024-01-05 15:58:39,466 - epoch: 30, kl_weight: 0.16, tmp: 0.50
+2024-01-05 15:58:39,467 - Trn--- loss: 13.6078, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9958, labeled_recon_loss: 0.4891, labeled_kl_loss: 0.0209, labeled_reinflect_recon_acc: 0.8160
+2024-01-05 15:58:40,168 - Tst--- loss: 0.1972, labeled_pred_loss: 0.0094, labeled_pred_acc: 0.9984, labeled_recon_loss: 0.4848, labeled_kl_loss: 0.0002,  labeled_reinflect_recon_acc: 0.8167
+2024-01-05 15:59:07,278 - exact_match_tst_acc: 0.001
+2024-01-05 15:59:08,231 - 
+2024-01-05 15:59:08,231 - #epc: 31
+2024-01-05 15:59:08,232 - epc:31, epc_KL:  1.000000
+2024-01-05 15:59:41,517 - epoch: 31, kl_weight: 0.16, tmp: 0.50
+2024-01-05 15:59:41,519 - Trn--- loss: 13.5907, labeled_pred_loss: 0.0030, labeled_pred_acc: 0.9958, labeled_recon_loss: 0.4883, labeled_kl_loss: 0.0182, labeled_reinflect_recon_acc: 0.8163
+2024-01-05 15:59:42,156 - Tst--- loss: 0.1983, labeled_pred_loss: 0.0093, labeled_pred_acc: 0.9986, labeled_recon_loss: 0.4888, labeled_kl_loss: 0.0002,  labeled_reinflect_recon_acc: 0.8154
+2024-01-05 16:00:10,668 - exact_match_tst_acc: 0.000
+2024-01-05 16:00:11,543 - 
+2024-01-05 16:00:11,543 - #epc: 32
+2024-01-05 16:00:11,545 - epc:32, epc_KL:  1.000000

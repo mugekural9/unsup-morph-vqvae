@@ -116,8 +116,8 @@ class VQVAE(nn.Module):
         return pred_tokens
     
     def reinflect(self, lemma, tgt, entries=None):
-        _, out_lemma, _, bck  = self.encoder(lemma)
-        _, out_tgt, fwd_tgt, _  = self.encoder(tgt)
+        _, out_lemma, _, _  = self.encoder(lemma)
+        _, out_tgt, _, _  = self.encoder(tgt)
         #(1,batchsize,zdim)
         mu     = self.z_lemma_mu(out_lemma) 
         logvar = self.z_lemma_logvar(out_lemma) 

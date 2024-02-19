@@ -17,4 +17,4 @@ class Probe(nn.Module):
         pred_tokens = torch.argmax(probs,dim=2)
         true = sum(pred_tokens==y.unsqueeze(1))
         total = len(y)
-        return xloss, pred_tokens, true, total
+        return xloss, pred_tokens, true, total, logits

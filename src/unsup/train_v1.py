@@ -39,10 +39,10 @@ INPUT_EMB_DIM = 128
 TRN_ID = 'run'+str(RUNID)+"_"+str(NUM_CODEBOOK)+"x"+str(NUM_CODEBOOK_ENTRIES)+"_zLEM"+str(Z_LEMMA_NH)+"_zTAG"+ str(Z_TAG_NH)+ "_decnh"+str(DEC_NH)+"_kl"+str(KL_WEIGHT)+"_epc"+str(KL_ANNEAL_EPC)+"_strt"+str(KL_START_EPC)+"_decdo"+str(DEC_DROPOUT)+"_inpemb"+str(INPUT_EMB_DIM)+"_bsize"+str(BATCHSIZE)
 
 if DATASET_TYPE == 'all':
-    path = 'results/vqvae1/unsup/all/'+str(TRN_ID)
+    path = 'results/vqvae_noinductivebias/unsup/all/'+str(TRN_ID)
     ffile = '/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold'
 elif DATASET_TYPE == 'verbs':
-    path = 'results/vqvae1/unsup/verbs/'+str(TRN_ID)
+    path = 'results/vqvae_noinductivebias/unsup/verbs/'+str(TRN_ID)
     ffile = '/kuacc/users/mugekural/workfolder/dev/git/unsup-morph-vqvae/src/dataset/tur.gold_VERBS'
 
 
@@ -333,8 +333,8 @@ def train(model, opt, trnbatches, devbatches, tstbatches, charvocab, _trnbatches
                           epc_q_indices['trn'][idx] = defaultdict(lambda:0)
                     epc_q_indices['trn'][idx][q] +=qlist.count(q)
         #-end of trn
-        #with open(path+'/qinds_trn_epc'+str(epc)+'.json', 'w') as fp:
-        #    json.dump(qjson_trn, fp, ensure_ascii=False, indent = 4)
+        with open(path+'/qinds_trn_epc'+str(epc)+'.json', 'w') as fp:
+            json.dump(qjson_trn, fp, ensure_ascii=False, indent = 4)
      
         ## dev (teacher forcing)
         model.eval()

@@ -1,0 +1,283 @@
+2024-01-17 14:29:06,030 - trnsize: 404897
+2024-01-17 14:29:06,032 - devsize: 1446
+2024-01-17 14:29:06,033 - tstsize: 1446
+2024-01-17 14:29:06,650 - Trn unique tgts: 404896
+2024-01-17 14:29:06,652 - Trn unique lemmas: 588
+2024-01-17 14:29:06,653 - Trn unique taglists: 703
+2024-01-17 14:29:06,654 - Dev unique tgts: 1446
+2024-01-17 14:29:06,655 - Dev unique lemmas: 536
+2024-01-17 14:29:06,656 - Dev unique taglists: 616
+2024-01-17 14:29:06,657 - Tst unique tgts: 1446
+2024-01-17 14:29:06,657 - Tst unique lemmas: 536
+2024-01-17 14:29:06,659 - Tst unique taglists: 616
+2024-01-17 14:29:06,659 - seen_dev_tgt: 1
+2024-01-17 14:29:06,661 - seen_dev_lemma: 1446
+2024-01-17 14:29:06,662 - seen_dev_taglist: 1446
+2024-01-17 14:29:06,663 - seen_tst_tgt: 1
+2024-01-17 14:29:06,664 - seen_tst_lemma: 1446
+2024-01-17 14:29:06,665 - seen_tst_taglist: 1446
+2024-01-17 14:29:47,396 - trnID: run2_6x8_zLEM150_zTAG200_decnh256_klmax0.2_decdo0.4_inpemb300_bsize32_mintau0.5_TAU_soft
+2024-01-17 14:29:47,397 - batchsize: 32
+2024-01-17 14:29:47,399 - epochs: 30
+2024-01-17 14:29:47,400 - lr: 0.00050
+2024-01-17 14:29:47,401 - KL_MAX: 0.20000
+2024-01-17 14:29:47,402 - opt: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.5, 0.999)
+    capturable: False
+    eps: 1e-08
+    foreach: None
+    lr: 0.0005
+    maximize: False
+    weight_decay: 0
+)
+2024-01-17 14:29:47,404 - MSVAE(
+  (embed): Embedding(39, 300)
+  (z_to_dec): Linear(in_features=150, out_features=256, bias=True)
+  (tag_to_dec): Linear(in_features=200, out_features=256, bias=True)
+  (encoder): MSVED_Encoder(
+    (embed): Embedding(39, 300)
+    (gru): GRU(300, 256, batch_first=True, bidirectional=True)
+    (dropout_in): Dropout(p=0.0, inplace=False)
+    (linear): Linear(in_features=512, out_features=300, bias=True)
+  )
+  (decoder): MSVED_Decoder(
+    (char_embed): Embedding(39, 300)
+    (dropout_in): Dropout(p=0.4, inplace=False)
+    (gru): GRU(650, 256, batch_first=True)
+    (attn): Linear(in_features=706, out_features=6, bias=True)
+    (attn_combine): Linear(in_features=650, out_features=650, bias=True)
+    (pred_linear): Linear(in_features=256, out_features=39, bias=True)
+    (loss): CrossEntropyLoss()
+  )
+  (tag_embeddings): ModuleList(
+    (0): Embedding(8, 200)
+    (1): Embedding(8, 200)
+    (2): Embedding(8, 200)
+    (3): Embedding(8, 200)
+    (4): Embedding(8, 200)
+    (5): Embedding(8, 200)
+  )
+  (classifiers): ModuleList(
+    (0): Linear(in_features=512, out_features=8, bias=True)
+    (1): Linear(in_features=512, out_features=8, bias=True)
+    (2): Linear(in_features=512, out_features=8, bias=True)
+    (3): Linear(in_features=512, out_features=8, bias=True)
+    (4): Linear(in_features=512, out_features=8, bias=True)
+    (5): Linear(in_features=512, out_features=8, bias=True)
+  )
+)
+2024-01-17 14:29:47,694 - trnsize: 404897
+2024-01-17 14:29:47,695 - devsize: 1446
+2024-01-17 14:29:47,697 - tstsize: 1446
+2024-01-17 14:29:47,697 - 
+2024-01-17 14:29:47,699 - #epc: 0
+2024-01-17 14:36:36,976 - epoch: 0, kl_weight: 0.07, tmp: 0.70
+2024-01-17 14:36:36,978 - Trn--- loss: 7.2499,  labeled_recon_loss: 0.3030, labeled_kl_loss: 81.6991, labeled_reinflect_recon_acc: 0.9005
+2024-01-17 14:36:38,797 - Tst--- loss: 0.0159, labeled_recon_loss: 0.1198, labeled_kl_loss: 0.1007,  labeled_reinflect_recon_acc: 0.9925, unique_tag_classes: 41, exact_match_dev_acc: 1428
+2024-01-17 14:37:06,820 - exact_match_tst_acc: 0.987
+2024-01-17 14:37:06,822 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 14:37:07,398 - 
+2024-01-17 14:37:07,399 - #epc: 1
+2024-01-17 14:44:02,235 - epoch: 1, kl_weight: 0.16, tmp: 0.50
+2024-01-17 14:44:02,237 - Trn--- loss: 3.2690,  labeled_recon_loss: 0.0325, labeled_kl_loss: 23.0167, labeled_reinflect_recon_acc: 0.9894
+2024-01-17 14:44:04,119 - Tst--- loss: 0.0165, labeled_recon_loss: 0.0713, labeled_kl_loss: 0.0725,  labeled_reinflect_recon_acc: 0.9953, unique_tag_classes: 55, exact_match_dev_acc: 1431
+2024-01-17 14:44:32,034 - exact_match_tst_acc: 0.987
+2024-01-17 14:44:32,035 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 14:44:32,759 - 
+2024-01-17 14:44:32,761 - #epc: 2
+2024-01-17 14:51:32,756 - epoch: 2, kl_weight: 0.20, tmp: 0.50
+2024-01-17 14:51:32,758 - Trn--- loss: 4.2853,  labeled_recon_loss: 0.0392, labeled_kl_loss: 18.5750, labeled_reinflect_recon_acc: 0.9869
+2024-01-17 14:51:34,616 - Tst--- loss: 0.0175, labeled_recon_loss: 0.0626, labeled_kl_loss: 0.0656,  labeled_reinflect_recon_acc: 0.9960, unique_tag_classes: 62, exact_match_dev_acc: 1437
+2024-01-17 14:52:03,033 - exact_match_tst_acc: 0.995
+2024-01-17 14:52:03,035 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 14:52:03,612 - 
+2024-01-17 14:52:03,614 - #epc: 3
+2024-01-17 14:58:59,298 - epoch: 3, kl_weight: 0.20, tmp: 0.50
+2024-01-17 14:58:59,299 - Trn--- loss: 4.2352,  labeled_recon_loss: 0.0374, labeled_kl_loss: 17.5380, labeled_reinflect_recon_acc: 0.9876
+2024-01-17 14:59:01,083 - Tst--- loss: 0.0203, labeled_recon_loss: 0.1124, labeled_kl_loss: 0.0619,  labeled_reinflect_recon_acc: 0.9932, unique_tag_classes: 62, exact_match_dev_acc: 1433
+2024-01-17 14:59:28,777 - exact_match_tst_acc: 0.993
+2024-01-17 14:59:28,778 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 14:59:29,289 - 
+2024-01-17 14:59:29,290 - #epc: 4
+2024-01-17 15:06:10,831 - epoch: 4, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:06:10,833 - Trn--- loss: 4.0977,  labeled_recon_loss: 0.0348, labeled_kl_loss: 17.1084, labeled_reinflect_recon_acc: 0.9884
+2024-01-17 15:06:12,620 - Tst--- loss: 0.0194, labeled_recon_loss: 0.1017, labeled_kl_loss: 0.0615,  labeled_reinflect_recon_acc: 0.9938, unique_tag_classes: 61, exact_match_dev_acc: 1428
+2024-01-17 15:06:39,453 - exact_match_tst_acc: 0.989
+2024-01-17 15:06:39,454 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:06:39,979 - 
+2024-01-17 15:06:39,980 - #epc: 5
+2024-01-17 15:13:23,160 - epoch: 5, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:13:23,162 - Trn--- loss: 4.0025,  labeled_recon_loss: 0.0328, labeled_kl_loss: 16.8207, labeled_reinflect_recon_acc: 0.9891
+2024-01-17 15:13:24,964 - Tst--- loss: 0.0185, labeled_recon_loss: 0.0953, labeled_kl_loss: 0.0589,  labeled_reinflect_recon_acc: 0.9946, unique_tag_classes: 57, exact_match_dev_acc: 1435
+2024-01-17 15:13:52,354 - exact_match_tst_acc: 0.988
+2024-01-17 15:13:52,355 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:13:52,883 - 
+2024-01-17 15:13:52,884 - #epc: 6
+2024-01-17 15:20:44,938 - epoch: 6, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:20:44,940 - Trn--- loss: 3.9388,  labeled_recon_loss: 0.0316, labeled_kl_loss: 16.6218, labeled_reinflect_recon_acc: 0.9896
+2024-01-17 15:20:46,726 - Tst--- loss: 0.0182, labeled_recon_loss: 0.0893, labeled_kl_loss: 0.0595,  labeled_reinflect_recon_acc: 0.9947, unique_tag_classes: 61, exact_match_dev_acc: 1435
+2024-01-17 15:21:14,928 - exact_match_tst_acc: 0.988
+2024-01-17 15:21:14,930 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:21:15,494 - 
+2024-01-17 15:21:15,495 - #epc: 7
+2024-01-17 15:28:16,146 - epoch: 7, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:28:16,147 - Trn--- loss: 3.8803,  labeled_recon_loss: 0.0304, labeled_kl_loss: 16.4415, labeled_reinflect_recon_acc: 0.9899
+2024-01-17 15:28:17,900 - Tst--- loss: 0.0193, labeled_recon_loss: 0.1075, labeled_kl_loss: 0.0587,  labeled_reinflect_recon_acc: 0.9934, unique_tag_classes: 59, exact_match_dev_acc: 1432
+2024-01-17 15:28:45,169 - exact_match_tst_acc: 0.992
+2024-01-17 15:28:45,170 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:28:45,702 - 
+2024-01-17 15:28:45,703 - #epc: 8
+2024-01-17 15:35:46,713 - epoch: 8, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:35:46,715 - Trn--- loss: 3.8323,  labeled_recon_loss: 0.0296, labeled_kl_loss: 16.2799, labeled_reinflect_recon_acc: 0.9902
+2024-01-17 15:35:48,550 - Tst--- loss: 0.0159, labeled_recon_loss: 0.0634, labeled_kl_loss: 0.0575,  labeled_reinflect_recon_acc: 0.9959, unique_tag_classes: 58, exact_match_dev_acc: 1435
+2024-01-17 15:36:15,804 - exact_match_tst_acc: 0.990
+2024-01-17 15:36:15,805 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:36:16,327 - 
+2024-01-17 15:36:16,328 - #epc: 9
+2024-01-17 15:43:09,930 - epoch: 9, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:43:09,931 - Trn--- loss: 3.8009,  labeled_recon_loss: 0.0292, labeled_kl_loss: 16.1692, labeled_reinflect_recon_acc: 0.9904
+2024-01-17 15:43:11,727 - Tst--- loss: 0.0157, labeled_recon_loss: 0.0603, labeled_kl_loss: 0.0573,  labeled_reinflect_recon_acc: 0.9963, unique_tag_classes: 58, exact_match_dev_acc: 1437
+2024-01-17 15:43:39,528 - exact_match_tst_acc: 0.995
+2024-01-17 15:43:39,529 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:43:40,051 - 
+2024-01-17 15:43:40,052 - #epc: 10
+2024-01-17 15:50:29,458 - epoch: 10, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:50:29,459 - Trn--- loss: 3.7636,  labeled_recon_loss: 0.0285, labeled_kl_loss: 16.0469, labeled_reinflect_recon_acc: 0.9906
+2024-01-17 15:50:31,282 - Tst--- loss: 0.0203, labeled_recon_loss: 0.1262, labeled_kl_loss: 0.0569,  labeled_reinflect_recon_acc: 0.9925, unique_tag_classes: 59, exact_match_dev_acc: 1429
+2024-01-17 15:50:58,799 - exact_match_tst_acc: 0.992
+2024-01-17 15:50:58,801 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:50:59,290 - 
+2024-01-17 15:50:59,291 - #epc: 11
+2024-01-17 15:57:48,975 - epoch: 11, kl_weight: 0.20, tmp: 0.50
+2024-01-17 15:57:48,977 - Trn--- loss: 3.7278,  labeled_recon_loss: 0.0280, labeled_kl_loss: 15.9141, labeled_reinflect_recon_acc: 0.9908
+2024-01-17 15:57:50,757 - Tst--- loss: 0.0176, labeled_recon_loss: 0.0911, labeled_kl_loss: 0.0562,  labeled_reinflect_recon_acc: 0.9949, unique_tag_classes: 57, exact_match_dev_acc: 1435
+2024-01-17 15:58:18,522 - exact_match_tst_acc: 0.996
+2024-01-17 15:58:18,524 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 15:58:19,012 - 
+2024-01-17 15:58:19,013 - #epc: 12
+2024-01-17 16:05:29,045 - epoch: 12, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:05:29,047 - Trn--- loss: 3.6965,  labeled_recon_loss: 0.0275, labeled_kl_loss: 15.8047, labeled_reinflect_recon_acc: 0.9909
+2024-01-17 16:05:31,150 - Tst--- loss: 0.0168, labeled_recon_loss: 0.0801, labeled_kl_loss: 0.0556,  labeled_reinflect_recon_acc: 0.9952, unique_tag_classes: 60, exact_match_dev_acc: 1434
+2024-01-17 16:05:58,787 - exact_match_tst_acc: 0.994
+2024-01-17 16:05:58,789 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:05:59,284 - 
+2024-01-17 16:05:59,285 - #epc: 13
+2024-01-17 16:12:49,863 - epoch: 13, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:12:49,864 - Trn--- loss: 3.6759,  labeled_recon_loss: 0.0273, labeled_kl_loss: 15.7260, labeled_reinflect_recon_acc: 0.9910
+2024-01-17 16:12:51,691 - Tst--- loss: 0.0151, labeled_recon_loss: 0.0577, labeled_kl_loss: 0.0554,  labeled_reinflect_recon_acc: 0.9964, unique_tag_classes: 59, exact_match_dev_acc: 1437
+2024-01-17 16:13:19,197 - exact_match_tst_acc: 0.994
+2024-01-17 16:13:19,198 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:13:19,759 - 
+2024-01-17 16:13:19,760 - #epc: 14
+2024-01-17 16:20:22,018 - epoch: 14, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:20:22,020 - Trn--- loss: 3.6554,  labeled_recon_loss: 0.0269, labeled_kl_loss: 15.6623, labeled_reinflect_recon_acc: 0.9911
+2024-01-17 16:20:23,829 - Tst--- loss: 0.0151, labeled_recon_loss: 0.0555, labeled_kl_loss: 0.0561,  labeled_reinflect_recon_acc: 0.9967, unique_tag_classes: 63, exact_match_dev_acc: 1438
+2024-01-17 16:20:51,464 - exact_match_tst_acc: 0.993
+2024-01-17 16:20:51,465 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:20:51,950 - 
+2024-01-17 16:20:51,951 - #epc: 15
+2024-01-17 16:27:54,786 - epoch: 15, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:27:54,787 - Trn--- loss: 3.6370,  labeled_recon_loss: 0.0267, labeled_kl_loss: 15.5837, labeled_reinflect_recon_acc: 0.9912
+2024-01-17 16:27:56,610 - Tst--- loss: 0.0168, labeled_recon_loss: 0.0815, labeled_kl_loss: 0.0551,  labeled_reinflect_recon_acc: 0.9951, unique_tag_classes: 56, exact_match_dev_acc: 1435
+2024-01-17 16:28:24,142 - exact_match_tst_acc: 0.993
+2024-01-17 16:28:24,143 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:28:24,673 - 
+2024-01-17 16:28:24,674 - #epc: 16
+2024-01-17 16:35:25,653 - epoch: 16, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:35:25,655 - Trn--- loss: 3.6130,  labeled_recon_loss: 0.0263, labeled_kl_loss: 15.5046, labeled_reinflect_recon_acc: 0.9914
+2024-01-17 16:35:27,452 - Tst--- loss: 0.0155, labeled_recon_loss: 0.0639, labeled_kl_loss: 0.0553,  labeled_reinflect_recon_acc: 0.9958, unique_tag_classes: 59, exact_match_dev_acc: 1435
+2024-01-17 16:35:55,287 - exact_match_tst_acc: 0.993
+2024-01-17 16:35:55,289 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:35:55,782 - 
+2024-01-17 16:35:55,783 - #epc: 17
+2024-01-17 16:43:00,079 - epoch: 17, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:43:00,081 - Trn--- loss: 3.6002,  labeled_recon_loss: 0.0261, labeled_kl_loss: 15.4596, labeled_reinflect_recon_acc: 0.9914
+2024-01-17 16:43:01,926 - Tst--- loss: 0.0146, labeled_recon_loss: 0.0524, labeled_kl_loss: 0.0547,  labeled_reinflect_recon_acc: 0.9967, unique_tag_classes: 60, exact_match_dev_acc: 1435
+2024-01-17 16:43:30,092 - exact_match_tst_acc: 0.990
+2024-01-17 16:43:30,093 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:43:30,629 - 
+2024-01-17 16:43:30,630 - #epc: 18
+2024-01-17 16:50:33,647 - epoch: 18, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:50:33,649 - Trn--- loss: 3.5786,  labeled_recon_loss: 0.0260, labeled_kl_loss: 15.3678, labeled_reinflect_recon_acc: 0.9915
+2024-01-17 16:50:35,453 - Tst--- loss: 0.0167, labeled_recon_loss: 0.0812, labeled_kl_loss: 0.0552,  labeled_reinflect_recon_acc: 0.9954, unique_tag_classes: 57, exact_match_dev_acc: 1435
+2024-01-17 16:51:03,479 - exact_match_tst_acc: 0.995
+2024-01-17 16:51:03,481 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:51:04,205 - 
+2024-01-17 16:51:04,206 - #epc: 19
+2024-01-17 16:58:13,539 - epoch: 19, kl_weight: 0.20, tmp: 0.50
+2024-01-17 16:58:13,541 - Trn--- loss: 3.5652,  labeled_recon_loss: 0.0258, labeled_kl_loss: 15.3161, labeled_reinflect_recon_acc: 0.9915
+2024-01-17 16:58:15,368 - Tst--- loss: 0.0183, labeled_recon_loss: 0.1051, labeled_kl_loss: 0.0544,  labeled_reinflect_recon_acc: 0.9941, unique_tag_classes: 57, exact_match_dev_acc: 1435
+2024-01-17 16:58:42,933 - exact_match_tst_acc: 0.991
+2024-01-17 16:58:42,935 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 16:58:43,431 - 
+2024-01-17 16:58:43,432 - #epc: 20
+2024-01-17 17:05:48,912 - epoch: 20, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:05:48,914 - Trn--- loss: 3.5490,  labeled_recon_loss: 0.0256, labeled_kl_loss: 15.2601, labeled_reinflect_recon_acc: 0.9916
+2024-01-17 17:05:50,743 - Tst--- loss: 0.0170, labeled_recon_loss: 0.0877, labeled_kl_loss: 0.0544,  labeled_reinflect_recon_acc: 0.9950, unique_tag_classes: 62, exact_match_dev_acc: 1435
+2024-01-17 17:06:18,539 - exact_match_tst_acc: 0.994
+2024-01-17 17:06:18,540 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:06:19,044 - 
+2024-01-17 17:06:19,045 - #epc: 21
+2024-01-17 17:13:16,838 - epoch: 21, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:13:16,840 - Trn--- loss: 3.5407,  labeled_recon_loss: 0.0257, labeled_kl_loss: 15.2046, labeled_reinflect_recon_acc: 0.9916
+2024-01-17 17:13:18,689 - Tst--- loss: 0.0148, labeled_recon_loss: 0.0595, labeled_kl_loss: 0.0532,  labeled_reinflect_recon_acc: 0.9965, unique_tag_classes: 55, exact_match_dev_acc: 1439
+2024-01-17 17:13:47,021 - exact_match_tst_acc: 0.994
+2024-01-17 17:13:47,023 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:13:47,576 - 
+2024-01-17 17:13:47,578 - #epc: 22
+2024-01-17 17:20:49,046 - epoch: 22, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:20:49,048 - Trn--- loss: 3.5250,  labeled_recon_loss: 0.0254, labeled_kl_loss: 15.1557, labeled_reinflect_recon_acc: 0.9917
+2024-01-17 17:20:50,843 - Tst--- loss: 0.0157, labeled_recon_loss: 0.0686, labeled_kl_loss: 0.0542,  labeled_reinflect_recon_acc: 0.9959, unique_tag_classes: 57, exact_match_dev_acc: 1436
+2024-01-17 17:21:18,781 - exact_match_tst_acc: 0.993
+2024-01-17 17:21:18,782 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:21:19,249 - 
+2024-01-17 17:21:19,250 - #epc: 23
+2024-01-17 17:28:18,154 - epoch: 23, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:28:18,156 - Trn--- loss: 3.5118,  labeled_recon_loss: 0.0252, labeled_kl_loss: 15.1076, labeled_reinflect_recon_acc: 0.9918
+2024-01-17 17:28:19,934 - Tst--- loss: 0.0188, labeled_recon_loss: 0.1147, labeled_kl_loss: 0.0537,  labeled_reinflect_recon_acc: 0.9933, unique_tag_classes: 61, exact_match_dev_acc: 1430
+2024-01-17 17:28:47,910 - exact_match_tst_acc: 0.992
+2024-01-17 17:28:47,911 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:28:48,405 - 
+2024-01-17 17:28:48,407 - #epc: 24
+2024-01-17 17:35:53,933 - epoch: 24, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:35:53,934 - Trn--- loss: 3.4944,  labeled_recon_loss: 0.0251, labeled_kl_loss: 15.0340, labeled_reinflect_recon_acc: 0.9918
+2024-01-17 17:35:55,768 - Tst--- loss: 0.0205, labeled_recon_loss: 0.1392, labeled_kl_loss: 0.0538,  labeled_reinflect_recon_acc: 0.9920, unique_tag_classes: 62, exact_match_dev_acc: 1433
+2024-01-17 17:36:23,799 - exact_match_tst_acc: 0.993
+2024-01-17 17:36:23,800 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:36:24,294 - 
+2024-01-17 17:36:24,295 - #epc: 25
+2024-01-17 17:43:38,702 - epoch: 25, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:43:38,704 - Trn--- loss: 3.4838,  labeled_recon_loss: 0.0247, labeled_kl_loss: 15.0137, labeled_reinflect_recon_acc: 0.9919
+2024-01-17 17:43:40,650 - Tst--- loss: 0.0202, labeled_recon_loss: 0.1370, labeled_kl_loss: 0.0531,  labeled_reinflect_recon_acc: 0.9928, unique_tag_classes: 64, exact_match_dev_acc: 1433
+2024-01-17 17:44:08,149 - exact_match_tst_acc: 0.992
+2024-01-17 17:44:08,150 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:44:08,680 - 
+2024-01-17 17:44:08,682 - #epc: 26
+2024-01-17 17:51:16,765 - epoch: 26, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:51:16,766 - Trn--- loss: 3.4756,  labeled_recon_loss: 0.0246, labeled_kl_loss: 14.9859, labeled_reinflect_recon_acc: 0.9920
+2024-01-17 17:51:18,586 - Tst--- loss: 0.0141, labeled_recon_loss: 0.0473, labeled_kl_loss: 0.0537,  labeled_reinflect_recon_acc: 0.9969, unique_tag_classes: 56, exact_match_dev_acc: 1433
+2024-01-17 17:51:46,762 - exact_match_tst_acc: 0.990
+2024-01-17 17:51:46,763 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:51:47,270 - 
+2024-01-17 17:51:47,271 - #epc: 27
+2024-01-17 17:58:46,332 - epoch: 27, kl_weight: 0.20, tmp: 0.50
+2024-01-17 17:58:46,333 - Trn--- loss: 3.4727,  labeled_recon_loss: 0.0248, labeled_kl_loss: 14.9560, labeled_reinflect_recon_acc: 0.9919
+2024-01-17 17:58:48,184 - Tst--- loss: 0.0191, labeled_recon_loss: 0.1198, labeled_kl_loss: 0.0535,  labeled_reinflect_recon_acc: 0.9927, unique_tag_classes: 59, exact_match_dev_acc: 1430
+2024-01-17 17:59:16,877 - exact_match_tst_acc: 0.997
+2024-01-17 17:59:16,879 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 17:59:17,406 - 
+2024-01-17 17:59:17,407 - #epc: 28
+2024-01-17 18:06:18,093 - epoch: 28, kl_weight: 0.20, tmp: 0.50
+2024-01-17 18:06:18,094 - Trn--- loss: 3.4700,  labeled_recon_loss: 0.0246, labeled_kl_loss: 14.9583, labeled_reinflect_recon_acc: 0.9920
+2024-01-17 18:06:19,927 - Tst--- loss: 0.0140, labeled_recon_loss: 0.0503, labeled_kl_loss: 0.0523,  labeled_reinflect_recon_acc: 0.9968, unique_tag_classes: 61, exact_match_dev_acc: 1437
+2024-01-17 18:06:47,864 - exact_match_tst_acc: 0.994
+2024-01-17 18:06:47,866 - exact_match_tst_reinflection_wlemma: 0.001
+2024-01-17 18:06:48,413 - 
+2024-01-17 18:06:48,414 - #epc: 29
+2024-01-17 18:13:55,557 - epoch: 29, kl_weight: 0.20, tmp: 0.50
+2024-01-17 18:13:55,559 - Trn--- loss: 3.4546,  labeled_recon_loss: 0.0243, labeled_kl_loss: 14.9084, labeled_reinflect_recon_acc: 0.9921
+2024-01-17 18:13:57,380 - Tst--- loss: 0.0177, labeled_recon_loss: 0.1034, labeled_kl_loss: 0.0523,  labeled_reinflect_recon_acc: 0.9941, unique_tag_classes: 61, exact_match_dev_acc: 1432
+2024-01-17 18:14:25,324 - exact_match_tst_acc: 0.992
+2024-01-17 18:14:25,326 - exact_match_tst_reinflection_wlemma: 0.001
